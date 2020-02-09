@@ -1,0 +1,300 @@
+- id: GL001
+  alias: Tuinverlichting uit bij zonsopkomst
+  trigger:
+  - event: sunrise
+    platform: sun
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.tuinverlichting
+- id: GL002
+  alias: Tuinverlichting aan bij zonsondergang
+  trigger:
+  - event: sunset
+    platform: sun
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.tuinverlichting
+- id: KW001
+  alias: Keukenraam lamp aan bij zonsondergang
+  trigger:
+    platform: sun
+    event: sunset
+    offset: -00:15:00
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.keukenraam_lamp
+- id: KW002
+  alias: Keukenraam lamp uit om 0:30
+  trigger:
+    platform: time
+    at: 00:30:00
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.keukenraam_lamp
+- id: BR001
+  alias: Takken aan bij zonsondergang
+  trigger:
+    platform: sun
+    event: sunset
+    offset: -00:20:00
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.takken
+- id: BR002
+  alias: Takken uit om 1:00
+  trigger:
+    platform: time
+    at: 01:00:00
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.takken
+- id: TL001
+  alias: Toilet verlichting aan bij open deur
+  trigger:
+    platform: state
+    entity_id: binary_sensor.toiletdeur
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.toilet_lampen
+- id: TL002
+  alias: Toilet verlichting uit bij gesloten deur
+  trigger:
+    platform: state
+    entity_id: binary_sensor.toiletdeur
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.toilet_lampen
+- id: OW001
+  alias: Kantoor lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.kantoor_spots
+- id: OW002
+  alias: Kantoor lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.kantoor_spots
+- id: OW003
+  alias: Kantoor schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.kantoor_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kantoor_schakelaar
+- id: OW004
+  alias: Kantoor schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.kantoor_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kantoor_schakelaar
+- id: SW001
+  alias: Salon lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.salon_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.salon_spots
+- id: SW002
+  alias: Salon lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.salon_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.salon_spots
+- id: SW003
+  alias: Salon schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.salon_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.salon_schakelaar
+- id: SW004
+  alias: Salon schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.salon_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.salon_schakelaar
+- id: BW001
+  alias: Babykamer lamp aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_lamp_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.babykamer_lamp
+- id: BW002
+  alias: Babykamer lamp uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_lamp_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.babykamer_lamp
+- id: BW003
+  alias: Babykamer schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.babykamer_lamp
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_lamp_schakelaar
+- id: BW004
+  alias: Babykamer schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.babykamer_lamp
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_lamp_schakelaar
+- id: BF001
+  alias: Babykamer vloerlamp aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_vloerlampen
+- id: BF002
+  alias: Babykamer vloerlamp uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_vloerlampen
+- id: BF003
+  alias: Babykamer vloerlamp schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+- id: BF004
+  alias: Babykamer vloerlamp schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+- alias: Set washing machine active when power detected
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.esp_power_01_wattage
+    above: 10
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.washing_machine_status
+      state: Idle
+    - condition: state
+      entity_id: sensor.washing_machine_status
+      state: Clean
+    - condition: state
+      entity_id: sensor.washing_machine_status
+      state: Finishing
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.washing_machine_status
+      option: Running
+  id: c6e06bb205224ae3bb9b94b2f105b33e
+- alias: Set washing machine finished when power drops
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.esp_power_01_wattage
+    below: 6
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.washing_machine_status
+      state: Running
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.washing_machine_status
+      option: Finishing
+  id: 3bb94ebcac104df69f6d4a1cc2db69d2
+- alias: Set washing machine clean after timeout
+  trigger:
+  - platform: state
+    entity_id: input_select.washing_machine_status
+    to: Finishing
+    for:
+      minutes: 2
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.washing_machine_status
+      state: Finishing
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.washing_machine_status
+      option: Clean
+  id: 090fee16c5664a3da309fb29e709e236
+- alias: Send alert when washing machine is clean
+  trigger:
+  - platform: state
+    entity_id: sensor.washing_machine_status
+    to: Clean
+  action:
+  - service: notify.pushover
+    data:
+      message: Ahoy, mateys! The laundry is ready
+      title: Washingmachine
+      data:
+        sound: tugboat
+        priority: 0
+  id: 89dfa501834b4e90b73530ffd1849d1b
+- alias: Vertrek van werk
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.paulus
+    zone: zone.home
+    event: leave
+  action:
+  - service: notify.pushover
+    data:
+      message: Djang has left the buidling!
+      title: Location
+      data:
+        sound: pianobar
+        priority: 0
+  id: be7bb465f2a54143820f958ac0ee71e2

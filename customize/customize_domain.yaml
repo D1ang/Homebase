@@ -1,0 +1,3 @@
+### SET LIGHT SWITCHES TO TOGGLE ###
+light:
+  assumed_state: false

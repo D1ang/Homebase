@@ -1,0 +1,60 @@
+### MAIN SYSTEM ###
+homeassistant:
+
+  name: Homebase
+  latitude: !secret home_latitude
+  longitude: !secret home_longtitude
+  unit_system: metric
+  time_zone: Europe/Amsterdam
+
+  customize: !include customize/customize.yaml
+  customize_domain: !include customize/customize_domain.yaml
+  customize_glob: !include customize/customize_glob.yaml
+
+default_config:
+
+http: !include http.yaml
+
+### LOGGING, UPDATING AND DEVICE DISCOVERING ###
+system_health:
+logbook:
+history:
+updater:
+stream:
+
+### CUSTOMISATION ###
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+### WEATHER AND LOCATIONS ###
+sun:
+weather: !include platforms/weather.yaml
+map:
+
+### NOTIFIERS ###
+input_select: !include platforms/options.yaml
+notify: !include platforms/notify.yaml
+tts: !include platforms/google_tts.yaml
+
+### HARDWARE PLATFORMS ###
+rfxtrx: !include platforms/rfxcom.yaml
+nest: !include platforms/nest.yaml
+google_assistant: !include platforms/google_assistant.yaml
+nissan_leaf: !include platforms/nissan.yaml
+
+### SWITCHES ###
+switch: !include devices/switches/wol.yaml
+
+### LIGHTS ###
+light 1: !include devices/lights/milights.yaml
+
+### SENSORS ###
+binary_sensor: !include devices/sensors/bin_sensors.yaml
+sensor: !include devices/sensors/sensors.yaml
+
+### CAMERA'S ###
+camera: !include devices/cameras/camera.yaml
+
+### SCREENS ###
+cover: !include devices/rfxcom_screen.yaml

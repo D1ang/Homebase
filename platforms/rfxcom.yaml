@@ -1,0 +1,3 @@
+### RFXCOM PLATFORM ###
+device: /dev/ttyUSB0
+dummy: False

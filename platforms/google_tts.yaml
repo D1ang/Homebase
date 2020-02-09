@@ -1,0 +1,4 @@
+### GOOGLE VOICE NOFIFIER ###
+- platform: google_translate
+  cache: true
+  cache_dir: /tts

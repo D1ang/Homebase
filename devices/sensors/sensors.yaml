@@ -1,0 +1,13 @@
+- platform: rfxtrx
+  devices:
+    0a520d01cf0100f6350169:
+      name: Babykamer
+      data_type:
+       - Humidity
+       - Temperature
+
+- platform: template
+  sensors:
+    washing_machine_status:
+      value_template: '{{ states.input_select.washing_machine_status.state}}'
+      friendly_name: 'Washing Machine Status'

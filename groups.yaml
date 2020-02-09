@@ -1,0 +1,12 @@
+### TUIN VERLICHTING GROUP ###
+tuinverlichting:
+  name: Tuinlampen
+  entities:
+    - switch.achtertuin_lampen
+    - light.voordeurlamp
+
+### WOONKAMER VERLICHTING GROUP ###
+Woonkamerverlichting:
+  name: Woonkamer verlichting
+  entities:
+    - light.openhaard_spots

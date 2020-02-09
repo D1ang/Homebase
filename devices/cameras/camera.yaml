@@ -1,0 +1,7 @@
+### CAMERA'S ###
+  - platform: generic
+    name: Babyfoon
+    still_image_url: https://root:ismart12@192.168.1.185/cgi-bin/currentpic.cgi
+    stream_source: rtsp://192.168.1.185:8554/unicast
+    verify_ssl: false
+    authentication: digest

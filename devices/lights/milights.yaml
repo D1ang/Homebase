@@ -1,0 +1,27 @@
+### 5 MILIGHT DEVICES, 2 HOSTS ###
+- platform: limitlessled
+  bridges:
+   - host: 192.168.1.142
+     groups:
+     - number: 1
+       type: rgbww
+       name: Babykamer lamp
+     - number: 2
+       type: rgbww
+       name: Inloopkast lamp
+     - number: 3
+       type: rgbww
+       name: Kantoor spots
+     - number: 4
+       type: rgbww
+       name: Salon spots
+   - host: 192.168.10.25
+     port: 1001
+     groups:
+     - number: 1
+       type: rgbww
+       name: Openhaard spots
+     - number: 2
+       type: rgbww
+       name: Douche spots
+

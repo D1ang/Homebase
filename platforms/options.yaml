@@ -1,0 +1,9 @@
+### SELECTION MENU'S PLATFORM ###
+washing_machine_status:
+  name: Washing machine Status
+  options:
+    - Idle
+    - Running
+    - Finishing
+    - Clean
+  initial: Idle

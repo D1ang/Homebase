@@ -1,0 +1,4 @@
+### SWITCHES ###
+  - platform: wake_on_lan
+    name: Werksysteem
+    mac: "d8:cb:8a:a4:04:b3"
