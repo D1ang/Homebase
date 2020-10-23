@@ -1,26 +1,3 @@
-### LIGHT ICONS ###
-switch.takken:
-  icon: mdi:candle
-  friendly_name: Takken
-
-light.dressoir_lamp:
-  icon: mdi:lamp
-  friendly_name: Dressoir lamp
-
-switch.keukenraam_lamp:
-  icon: mdi:lamp
-  friendly_name: Keukenraam lamp
-
-light.openhaard_spots:
-  icon: mdi:track-light
-  friendly_name: Openhaard spots
-
-### WASHING MACHINE ICONS ###
-sensor.wasmachine_status:
-  icon: mdi:washing-machine
-sensor.droger_status:
-  icon: mdi:tumble-dryer
-
 ### PERSON ICONS ###
 person.django:
   entity_picture: /local/family/Django.jpg
