@@ -1,3 +1,9 @@
 ### RFXCOM PLATFORM ###
 device: /dev/ttyUSB0
-dummy: False
+
+devices:
+    # screens
+    071a0000010A2B00: #Studio
+    071a0000020EB201: #Keuken
+    071a0000030FC302: #Badkamer/Inloopkast
+    071a0000041DD402: #Babykamer

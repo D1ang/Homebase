@@ -1,5 +1,0 @@
-- platform: rfxtrx
-  devices:
-    0b110017011f8af20a010f40:
-      name: Toiletdeur
-      device_class: door

@@ -2,8 +2,9 @@ username: !secret nissan_username
 password: !secret nissan_password
 region: "NE"
 update_interval:
-  hours: 5
+  minutes: 30
 update_interval_charging:
   minutes: 15
 update_interval_climate:
   minutes: 5
+force_miles: false

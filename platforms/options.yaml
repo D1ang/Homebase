@@ -1,9 +1,18 @@
 ### SELECTION MENU'S PLATFORM ###
-washing_machine_status:
-  name: Washing machine Status
+wasmachine_status:
+  name: Wasmachine status
   options:
-    - Idle
-    - Running
-    - Finishing
-    - Clean
-  initial: Idle
+    - Standby
+    - Bezig
+    - Afronden
+    - Schoon
+  initial: Standby
+
+droger_status:
+  name: Droger Status
+  options:
+    - Standby
+    - Bezig
+    - Afronden
+    - Droog
+  initial: Standby

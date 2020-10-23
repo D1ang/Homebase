@@ -16,10 +16,10 @@ light.openhaard_spots:
   friendly_name: Openhaard spots
 
 ### WASHING MACHINE ICONS ###
-sensor.washing_machine_status:
+sensor.wasmachine_status:
   icon: mdi:washing-machine
-sensor.dishwasher_status:
-  icon: mdi:washing-machine
+sensor.droger_status:
+  icon: mdi:tumble-dryer
 
 ### PERSON ICONS ###
 person.django:

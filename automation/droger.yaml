@@ -1,0 +1,78 @@
+- alias: Set dryer active when power detected
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.esp_power_02_wattage
+    above: 10
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Idle
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Dry
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Finishing
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Running
+
+
+
+- alias: Set dryer finished when power drops
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.esp_power_02_wattage
+    below: 6
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.dryer_status
+      state: Running
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Finishing
+  id: DR0002
+- alias: Set dryer dry after timeout
+  trigger:
+  - platform: state
+    entity_id: input_select.dryer_status
+    to: Finishing
+    for:
+      minutes: 2
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.dryer_status
+      state: Finishing
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Dry
+
+
+
+- alias: Send alert when dryer is dry
+  trigger:
+  - platform: state
+    entity_id: sensor.dryer_status
+    to: Dry
+  action:
+  - service: notify.pushover
+    data:
+      message: Alert! The dryer is ready
+      title: Dryer
+      data:
+        sound: incoming
+        priority: 0
+  - service: homeassistant.turn_off
+    entity_id: switch.dryer

@@ -3,18 +3,16 @@
   bridges:
    - host: 192.168.1.142
      groups:
-     - number: 1
-       type: rgbww
-       name: Babykamer lamp
      - number: 2
        type: rgbww
-       name: Inloopkast lamp
+       name: Trap spots
      - number: 3
        type: rgbww
        name: Kantoor spots
      - number: 4
        type: rgbww
        name: Salon spots
+
    - host: 192.168.10.25
      port: 1001
      groups:
@@ -24,4 +22,23 @@
      - number: 2
        type: rgbww
        name: Douche spots
+     - number: 3
+       type: rgbww
+       name: afzuigkap
+     - number: 4
+       type: rgbww
+       name: Keuken spots
+
+   - host: 192.168.10.25
+     port: 1002
+     groups:
+     - number: 1
+       type: rgbww
+       name: Voordeurlamp
+     - number: 3
+       type: rgbww
+       name: Babykamer lamp
+     - number: 4
+       type: rgbww
+       name: Inloopkast lamp
 

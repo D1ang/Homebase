@@ -20,11 +20,13 @@ system_health:
 logbook:
 history:
 updater:
+discovery:
 stream:
 
 ### CUSTOMISATION ###
 group: !include groups.yaml
 automation: !include automations.yaml
+#automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 
 ### WEATHER AND LOCATIONS ###
@@ -39,22 +41,21 @@ tts: !include platforms/google_tts.yaml
 
 ### HARDWARE PLATFORMS ###
 rfxtrx: !include platforms/rfxcom.yaml
-nest: !include platforms/nest.yaml
 google_assistant: !include platforms/google_assistant.yaml
 nissan_leaf: !include platforms/nissan.yaml
-
-### SWITCHES ###
-switch: !include devices/switches/wol.yaml
 
 ### LIGHTS ###
 light 1: !include devices/lights/milights.yaml
 
 ### SENSORS ###
-binary_sensor: !include devices/sensors/bin_sensors.yaml
 sensor: !include devices/sensors/sensors.yaml
 
-### CAMERA'S ###
-camera: !include devices/cameras/camera.yaml
-
-### SCREENS ###
-cover: !include devices/rfxcom_screen.yaml
+### INFLUXDB ####
+influxdb:
+  host: 192.168.1.150
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: test
+  max_retries: 3
+  default_measurement: state
