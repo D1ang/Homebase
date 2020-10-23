@@ -23,11 +23,11 @@ ota:
 
 switch:
   - platform: gpio
-    name: Washok_1 schakelaar
+    name: Boventrap spots schakelaar
     id: relay1
     pin: GPIO12
   - platform: gpio
-    name: Washok_2 schakelaar
+    name: Wasruimte spots schakelaar
     id: relay2
     pin: GPIO5
 
@@ -37,7 +37,7 @@ binary_sensor:
       number: GPIO0
       mode: INPUT_PULLUP
       inverted: True
-    name: "Washok 1 schakelaar"
+    name: "Boventrap spots schakelaar"
     on_press:
       - switch.toggle: relay1
   - platform: gpio
@@ -45,7 +45,7 @@ binary_sensor:
       number: GPIO9
       mode: INPUT_PULLUP
       inverted: True
-    name: "Washok 2 schakelaar"
+    name: "Wasruimte spots schakelaar"
     on_press:
       - switch.toggle: relay2
 
@@ -55,8 +55,3 @@ output:
     pin:
       number: GPIO13
       inverted: True
-
-light:
-  - platform: monochromatic
-    name: "Touch 01 status LED"
-    output: blue_led
