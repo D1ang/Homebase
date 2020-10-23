@@ -1,0 +1,116 @@
+substitutions:
+  device_name: kantoorschakelaar
+  friendly_name: "Kantoor schakelaar"
+  api_password: !secret esphome_api
+  ota_password: !secret esphome_ota
+  
+esphome:
+  name: ${device_name}
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret IoT_ssid
+  password: !secret IoT_password
+  manual_ip:
+    static_ip: 192.168.10.26
+    gateway: 192.168.10.1
+    subnet: 255.255.255.0
+    dns1: 192.168.10.1
+    dns2: 0.0.0.0
+
+logger:
+
+api:
+  password: ${api_password}
+
+ota:
+  password: ${ota_password}
+
+status_led:
+  pin:
+    number: GPIO0
+    inverted: True
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO12
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} button left"
+    on_press:
+      - switch.toggle: relay_1
+  - platform: gpio
+    pin:
+      number: GPIO3
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} button middle"
+    on_press:
+      - switch.toggle: relay_2
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} button right"
+    on_press:
+      - switch.toggle: relay_3
+
+switch:
+  - platform: gpio
+    name: "${friendly_name} left"
+    pin: GPIO13
+    id: relay_1
+    on_turn_on:
+    - light.turn_on: left_led_light
+    on_turn_off:
+    - light.turn_off: left_led_light
+  - platform: gpio
+    name: "${friendly_name} middle"
+    pin: GPIO4
+    id: relay_2
+    on_turn_on:
+    - light.turn_on: middle_led_light
+    on_turn_off:
+    - light.turn_off: middle_led_light
+  - platform: gpio
+    name: "${friendly_name} right"
+    pin: GPIO15
+    id: relay_3
+    on_turn_on:
+    - light.turn_on: right_led_light
+    on_turn_off:
+    - light.turn_off: right_led_light
+
+output:
+  - platform: esp8266_pwm
+    id: left_led
+    pin: GPIO16
+    inverted: True
+  - platform: esp8266_pwm
+    id: middle_led
+    pin: GPIO14
+    inverted: True
+  - platform: esp8266_pwm
+    id: right_led
+    pin: GPIO1
+    inverted: True
+
+light:
+  - platform: monochromatic
+    name: "${friendly_name} LED left"
+    output: left_led
+    internal: true
+    id: left_led_light
+  - platform: monochromatic
+    name: "${friendly_name} LED middle"
+    output: middle_led
+    internal: true
+    id: middle_led_light
+  - platform: monochromatic
+    name: "${friendly_name} LED right"
+    output: right_led
+    internal: true
+    id: right_led_light

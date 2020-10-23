@@ -1,0 +1,55 @@
+esphome:
+  name: achtertuinlampen
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret IoT_ssid
+  password: !secret IoT_password
+  manual_ip:
+    static_ip: 192.168.10.19
+    gateway: 192.168.10.1
+    subnet: 255.255.255.0
+    dns1: 192.168.10.1
+    dns2: 0.0.0.0
+
+logger:
+
+api:
+  password: !secret esphome_api
+
+ota:
+  password: !secret esphome_ota
+
+switch:
+  - platform: gpio
+    name: Achtertuinlampen
+    id: relay
+    pin: GPIO12
+    on_turn_on:
+      - light.turn_on: led
+    on_turn_off:
+      - light.turn_off: led
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    on_press:
+      - switch.toggle: relay
+
+output:
+  - platform: esp8266_pwm
+    id: green_led
+    pin:
+      number: GPIO13
+      inverted: true
+
+light:
+  - platform: monochromatic
+    output: green_led
+    id: led
+    
