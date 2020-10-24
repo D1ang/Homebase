@@ -15,11 +15,11 @@
 - platform: template
   sensors:
     leaf_state:
-      value_template: "Charging: {{ states('binary_sensor.leaf1djan_charging_status') }}"
+      value_template: "Opladen: {{ states('binary_sensor.leaf1djan_charging_status') }}"
     leaf_range_ac: 
-      value_template: "A/C Milage: {{ states('sensor.leaf1djan_range_ac') }}"
+      value_template: "A/C Afstand: {{ states('sensor.leaf1djan_range_ac') }}"
     leaf_range: 
-      value_template: "Milage: {{ states('sensor.leaf1djan_range') }}"
+      value_template: "Afstand: {{ states('sensor.leaf1djan_range') }}"
     leaf_battery:
       unit_of_measurement: '%'
       value_template: "{{ states('sensor.leaf1djan_charge') }}"
