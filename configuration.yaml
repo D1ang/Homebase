@@ -29,7 +29,6 @@ script: !include scripts.yaml
 
 ### WEATHER AND LOCATIONS ###
 sun:
-weather: !include platforms/weather.yaml
 map:
 
 ### NOTIFIERS ###
