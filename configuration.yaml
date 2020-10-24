@@ -13,8 +13,6 @@ homeassistant:
 
 default_config:
 
-http: !include http.yaml
-
 ### LOGGING, UPDATING AND DEVICE DISCOVERING ###
 system_health:
 logbook:
@@ -37,11 +35,9 @@ map:
 ### NOTIFIERS ###
 input_select: !include platforms/options.yaml
 notify: !include platforms/notify.yaml
-tts: !include platforms/google_tts.yaml
 
 ### HARDWARE PLATFORMS ###
 rfxtrx: !include platforms/rfxcom.yaml
-google_assistant: !include platforms/google_assistant.yaml
 nissan_leaf: !include platforms/nissan.yaml
 
 ### LIGHTS ###
