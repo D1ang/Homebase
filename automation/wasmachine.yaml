@@ -1,0 +1,97 @@
+# When the washingmachine uses above the 10 Watts of usage set the state to "Bezig"
+- alias: Wasmachine status bezig
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.wasmachine_wattage
+    above: 10
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.wasmachine_status
+      state: Standby
+    - condition: state
+      entity_id: sensor.wasmachine_status
+      state: Schoon
+    - condition: state
+      entity_id: sensor.wasmachine_status
+      state: Afronden
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.wasmachine_status
+      option: Bezig
+
+# When the washing machine hits below the 6 Watts of usage change the status to "Afronden"
+- alias: Wasmachine status afronden
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.wasmachine_wattage
+    below: 6
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.wasmachine_status
+      state: Bezig
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.wasmachine_status
+      option: Afronden
+
+# set a countdown for 2 minutes when the washing machine is on "Afronden", after 1 minute change the state to "Schoon"
+- alias: Wasmachine status schoon
+  trigger:
+  - platform: state
+    entity_id: input_select.wasmachine_status
+    to: Afronden
+    for:
+      minutes: 1
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.wasmachine_status
+      state: Afronden
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.wasmachine_status
+      option: Schoon
+
+# Sends a pushover alert to mobile when the washing machine status is changed to "Schoon"
+- alias: Wasmachine status melding
+  trigger:
+  - platform: state
+    entity_id: sensor.wasmachine_status
+    to: Schoon
+  action:
+  - service: notify.pushover
+    data:
+      message: De wasmachine is klaar!
+      title: Wasmachine
+      data:
+        sound: tugboat
+        priority: 0
+  - service: homeassistant.turn_off
+    entity_id: switch.wasmachine
+
+# Sets the washing machine status to "Standby" when it is switched on from an off state
+- alias: Wasmachine status standby
+  trigger:
+  - platform: state
+    entity_id: switch.wasmachine
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.wasmachine_status
+      state: Schoon
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.wasmachine_status
+      option: Standby
