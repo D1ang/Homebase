@@ -60,7 +60,7 @@
       entity_id: input_select.droger_status
       option: Droog
 
-# Sends a pushover alert to mobile when the dryer status is changed to "Droog".
+# Sends a pushover alert to mobile when the dryer status is changed to "Droog"
 - alias: Droger status melding
   trigger:
   - platform: state
@@ -77,7 +77,7 @@
   - service: homeassistant.turn_off
     entity_id: switch.droger
 
-# Sets the dryer status to "Standby" when it is switched on from an off state.
+# Sets the dryer status to "Standby" when it is switched on from an off state
 - alias: Droger status standby
   trigger:
   - platform: state
