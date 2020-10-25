@@ -23,11 +23,11 @@ stream:
 
 ### CUSTOMISATION ###
 group: !include groups.yaml
-automation: !include automations.yaml
-#automation: !include_dir_merge_list automation
+automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 
 ### WEATHER AND LOCATIONS ###
+weather: !include platforms/weather.yaml
 sun:
 map:
 

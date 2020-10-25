@@ -1,0 +1,4 @@
+### WEATHER PLATFORM BUIENRADAR ###
+- platform: buienradar
+  name: 'Maarssen'
+  forecast: True
