@@ -9,7 +9,7 @@ wasmachine_status:
   initial: Standby
 
 droger_status:
-  name: Droger Status
+  name: Droger status
   options:
     - Standby
     - Bezig
