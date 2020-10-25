@@ -1,13 +1,11 @@
 .cloud
 .storage
+.vscode
 secrets.yaml
 esphome/secrets.yaml
 esphome/.esphome
 home-assistant.log
 home-assistant_v2.db
-platforms/google_service_account.json
-platforms/weather.yaml
 deps
 tts
 www
-http.yaml

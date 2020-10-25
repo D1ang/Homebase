@@ -18,6 +18,7 @@
         "esphome/**/.piolibdeps/": true,
         "esphome/**/lib/": true,
         "esphome/**/src/": true,
-        "esphome/**/platformio.ini": true
+        "esphome/**/platformio.ini": true,
+        "**/.vscode": true
     }
 }
