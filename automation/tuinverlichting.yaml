@@ -1,0 +1,17 @@
+# Turn the garden lights off at sunrise.
+- alias: Tuinverlichting zonsopkomst
+  trigger:
+  - event: sunrise
+    platform: sun
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.tuinverlichting
+
+# Turn the garden lights on at sundown.
+- alias: Tuinverlichting zonsondergang
+  trigger:
+  - event: sunset
+    platform: sun
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.tuinverlichting
