@@ -1,3 +1,22 @@
+# Sets the dryer status to "Standby" when it is switched on from an off state
+- alias: Droger status standby
+  trigger:
+  - platform: state
+    entity_id: switch.droger
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.droger_status
+      state: Droog
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.droger_status
+      option: Standby
+
 # When the dryer  uses above the 10 Watts of usage set the state to "Bezig"
 - alias: Droger status bezig
   trigger:
@@ -67,31 +86,9 @@
     entity_id: sensor.droger_status
     to: Droog
   action:
-  - service: notify.pushover
+  - service: notify.mobile_app_oneplus_nord
     data:
       message: De droger is gereed!
       title: Droger
-      data:
-        sound: incoming
-        priority: 0
   - service: homeassistant.turn_off
     entity_id: switch.droger
-
-# Sets the dryer status to "Standby" when it is switched on from an off state
-- alias: Droger status standby
-  trigger:
-  - platform: state
-    entity_id: switch.droger
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: sensor.droger_status
-      state: Droog
-  action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.droger_status
-      option: Standby
