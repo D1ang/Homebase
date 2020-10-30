@@ -1,3 +1,22 @@
+# Sets the washing machine status to "Standby" when it is switched on from an off state
+- alias: Wasmachine status standby
+  trigger:
+  - platform: state
+    entity_id: switch.wasmachine
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.wasmachine_status
+      state: Schoon
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.wasmachine_status
+      option: Standby
+
 # When the washingmachine uses above the 10 Watts of usage set the state to "Bezig"
 - alias: Wasmachine status bezig
   trigger:
@@ -67,31 +86,9 @@
     entity_id: sensor.wasmachine_status
     to: Schoon
   action:
-  - service: notify.pushover
+  - service: notify.mobile_app_oneplus_nord
     data:
       message: De wasmachine is klaar!
       title: Wasmachine
-      data:
-        sound: tugboat
-        priority: 0
   - service: homeassistant.turn_off
     entity_id: switch.wasmachine
-
-# Sets the washing machine status to "Standby" when it is switched on from an off state
-- alias: Wasmachine status standby
-  trigger:
-  - platform: state
-    entity_id: switch.wasmachine
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: sensor.wasmachine_status
-      state: Schoon
-  action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.wasmachine_status
-      option: Standby
