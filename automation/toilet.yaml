@@ -1,0 +1,15 @@
+- alias: Toilet bewegingssensor
+  trigger:
+  - type: motion
+    platform: device
+    device_id: ac2b262c05b111ebb642d12a10912f97
+    entity_id: binary_sensor.toilet_sensor
+    domain: binary_sensor
+    for:
+      seconds: 3
+  action:
+  - type: turn_on
+    device_id: a084e2ad152711ebb5951536f60f7f42
+    entity_id: switch.toilet_spots
+    domain: switch
+  mode: single
