@@ -1,0 +1,125 @@
+########## KANTOOR SPOTS ##########
+
+- id: OW001
+  alias: Kantoor lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_left
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.kantoor_spots
+
+- id: OW002
+  alias: Kantoor lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_left
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.kantoor_spots
+
+- id: OW003
+  alias: Kantoor schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.kantoor_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kantoor_schakelaar_relay_left
+
+- id: OW004
+  alias: Kantoor schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.kantoor_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kantoor_schakelaar_relay_left
+
+########## KANTOOR SFEERSPOTS ##########
+
+- id: S2W001
+  alias: Kantoor sfeerspots aan status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_middle
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kantoor_sfeerspots
+
+- id: S2W002
+  alias: Kantoor sfeerspots uit status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_middle
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kantoor_sfeerspots
+
+- id: S2W003
+  alias: Kantoor sfeerspots schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_sfeerspots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kantoor_schakelaar_relay_middle
+
+- id: S2W004
+  alias: Kantoor sfeerspots schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_sfeerspots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kantoor_schakelaar_relay_middle
+
+########## SALON LAMPEN SCHAKELING ##########
+
+- id: SW001
+  alias: Salon lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_right
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.salon_spots
+
+- id: SW002
+  alias: Salon lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.kantoor_schakelaar_relay_right
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.salon_spots
+
+- id: SW003
+  alias: Salon schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.salon_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kantoor_schakelaar_relay_right
+
+- id: SW004
+  alias: Salon schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.salon_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kantoor_schakelaar_relay_right

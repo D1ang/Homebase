@@ -1,0 +1,39 @@
+- id: TW001
+  alias: Trap spot aan status
+  trigger:
+    platform: state
+    entity_id: switch.washok_1_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.trap_spots
+
+- id: TW002
+  alias: Trap spot uit status
+  trigger:
+    platform: state
+    entity_id: switch.washok_1_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.trap_spots
+
+- id: TW003
+  alias: Trap schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.trap_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.washok_1_schakelaar
+
+- id: TW004
+  alias: Trap schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.trap_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.washok_1_schakelaar

@@ -1,0 +1,78 @@
+########## BABYKAMER LAMP ##########
+
+- id: BW001
+  alias: Babykamer lamp aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_lamp_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.babykamer_lamp
+
+- id: BW002
+  alias: Babykamer lamp uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_lamp_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.babykamer_lamp
+
+- id: BW003
+  alias: Babykamer schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.babykamer_lamp
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_lamp_schakelaar
+
+- id: BW004
+  alias: Babykamer schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.babykamer_lamp
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_lamp_schakelaar
+
+- id: BF001
+  alias: Babykamer vloerlamp aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_vloerlampen
+- id: BF002
+  alias: Babykamer vloerlamp uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_vloerlampen
+- id: BF003
+  alias: Babykamer vloerlamp schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.babykamer_vloerlampen_schakelaar
+- id: BF004
+  alias: Babykamer vloerlamp schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: switch.babykamer_vloerlampen
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.babykamer_vloerlampen_schakelaar
