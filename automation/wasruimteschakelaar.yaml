@@ -1,39 +1,39 @@
-- id: TW001
-  alias: Trap spot aan status
+# When the left switch is pressed turn the upstairs spots on
+- alias: Boventrap spots aan status
   trigger:
     platform: state
-    entity_id: switch.washok_1_schakelaar
+    entity_id: switch.boventrap_spots_schakelaar
     to: 'on'
   action:
   - service: homeassistant.turn_on
     entity_id: light.trap_spots
 
-- id: TW002
-  alias: Trap spot uit status
+# When the left switch is pressed turn the upstairs spots off
+- alias: Boventrap spots uit status
   trigger:
     platform: state
-    entity_id: switch.washok_1_schakelaar
+    entity_id: switch.boventrap_spots_schakelaar
     to: 'off'
   action:
   - service: homeassistant.turn_off
     entity_id: light.trap_spots
 
-- id: TW003
-  alias: Trap schakelaar aan status
+# When the app is used turn the upstairs spot on
+- alias: Boventrap schakelaar aan status
   trigger:
     platform: state
     entity_id: light.trap_spots
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.washok_1_schakelaar
+    entity_id: switch.boventrap_spots_schakelaar
 
-- id: TW004
-  alias: Trap schakelaar uit status
+# When the app is used turn the upstairs spot off
+- alias: Boventrap schakelaar uit status
   trigger:
     platform: state
     entity_id: light.trap_spots
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.washok_1_schakelaar
+    entity_id: switch.boventrap_spots_schakelaar

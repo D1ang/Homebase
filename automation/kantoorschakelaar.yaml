@@ -100,7 +100,6 @@
   - service: homeassistant.turn_off
     entity_id: light.salon_spots
 
-
 # When the app is used turn the salon spots on
 - alias: Salon schakelaar aan status
   trigger:
