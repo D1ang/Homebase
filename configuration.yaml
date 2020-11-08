@@ -31,9 +31,8 @@ weather: !include platforms/weather.yaml
 sun:
 map:
 
-### NOTIFIERS ###
+### SELECTORS ###
 input_select: !include platforms/options.yaml
-notify: !include platforms/notify.yaml
 
 ### HARDWARE PLATFORMS ###
 rfxtrx: !include platforms/rfxcom.yaml
