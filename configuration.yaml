@@ -7,7 +7,6 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Amsterdam
 
-  customize: !include customize/customize.yaml
   customize_domain: !include customize/customize_domain.yaml
   customize_glob: !include customize/customize_glob.yaml
 
