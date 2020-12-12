@@ -1,17 +1,7 @@
 {
     "files.exclude": {
-        "**/.cloud": true,
-        "**/.storage": true,
-        "**/secrets.yaml": true,
-        "esphome/secrets.yaml": true,
-        "esphome/.esphome": true,
-        "**/home-assistant.log": true,
-        "**/home-assistant_v2.db": true,
         "platforms/google_service_account.json": true,
         "platforms/weather.yaml": true,
-        "**/deps": true,
-        "**/tts": true,
-        "**/www": true,
         "**/http.yaml": true,
         "esphome/.esphome/": true,
         "esphome/**/.pioenvs/": true,
@@ -19,6 +9,16 @@
         "esphome/**/lib/": true,
         "esphome/**/src/": true,
         "esphome/**/platformio.ini": true,
-        "**/.vscode": true
+        "**/.cloud": true,
+        "**/.storage": true,
+        "**/.vscode": true,
+        "**/secrets.yaml": true,
+        "esphome/secrets.yaml": true,
+        "esphome/.esphome": true,
+        "**/home-assistant.log": true,
+        "**/home-assistant_v2.db": true,
+        "**/deps": true,
+        "**/tts": true,
+        "**/www": true
     }
 }
