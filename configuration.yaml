@@ -33,22 +33,14 @@ map:
 ### SELECTORS ###
 input_select: !include platforms/options.yaml
 
-### HARDWARE PLATFORMS ###
+### HARDWARE & SOFTWARE PLATFORMS ###
 rfxtrx: !include platforms/rfxcom.yaml
+nest: !include platforms/nest.yaml
 nissan_leaf: !include platforms/nissan.yaml
+influxdb: !include platforms/influxdb.yaml
 
 ### LIGHTS ###
 light 1: !include devices/lights/milights.yaml
 
 ### SENSORS ###
 sensor: !include devices/sensors/sensors.yaml
-
-### INFLUXDB ####
-influxdb:
-  host: 192.168.1.150
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: test
-  max_retries: 3
-  default_measurement: state
