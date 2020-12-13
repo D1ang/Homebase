@@ -2,7 +2,7 @@
 tuinverlichting:
   name: Tuinlampen
   entities:
-    - switch.achtertuin_lampen
+    - switch.achtertuin_verlichting
     - light.voordeurlamp
 
 ### WOONKAMER VERLICHTING GROUP ###
