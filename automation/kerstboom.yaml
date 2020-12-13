@@ -1,0 +1,18 @@
+# Turn the christmas tree on 20 minutes before sundown.
+- alias: Kerstboom zonsondergang aan
+  trigger:
+    platform: sun
+    event: sunset
+    offset: -00:20:00
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.kerstboom
+
+# Turn the christmas tree off at 01:00 AM
+- alias: Kerstboom schakelklok
+  trigger:
+    platform: time
+    at: 01:00:00
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.kerstboom
