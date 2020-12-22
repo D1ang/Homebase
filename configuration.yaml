@@ -8,7 +8,6 @@ homeassistant:
   time_zone: Europe/Amsterdam
 
   customize_domain: !include customize/customize_domain.yaml
-  customize_glob: !include customize/customize_glob.yaml
 
 default_config:
 
