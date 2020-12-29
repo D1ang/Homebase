@@ -34,8 +34,9 @@ input_select: !include platforms/options.yaml
 
 ### HARDWARE & SOFTWARE PLATFORMS ###
 rfxtrx: !include platforms/rfxcom.yaml
+
 nest: !include platforms/nest.yaml
-nissan_leaf: !include platforms/nissan.yaml
+# nissan_leaf: !include platforms/nissan.yaml
 influxdb: !include platforms/influxdb.yaml
 
 ### LIGHTS ###
