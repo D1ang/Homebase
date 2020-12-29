@@ -12,16 +12,3 @@
      - number: 4
        type: rgbww
        name: Salon spots
-
-   - host: 192.168.10.25
-     port: 1001
-     groups:
-     - number: 2
-       type: rgbww
-       name: Douche spots
-     - number: 3
-       type: rgbww
-       name: afzuigkap
-     - number: 4
-       type: rgbww
-       name: Keuken spots
