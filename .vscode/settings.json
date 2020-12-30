@@ -12,6 +12,7 @@
         "**/.cloud": true,
         "**/.storage": true,
         "**/.vscode": true,
+        ".vscode/settings.json": true,
         "**/secrets.yaml": true,
         "esphome/secrets.yaml": true,
         "esphome/.esphome": true,
