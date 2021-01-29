@@ -3,12 +3,6 @@
         "platforms/google_service_account.json": true,
         "platforms/weather.yaml": true,
         "**/http.yaml": true,
-        "esphome/.esphome/": true,
-        "esphome/**/.pioenvs/": true,
-        "esphome/**/.piolibdeps/": true,
-        "esphome/**/lib/": true,
-        "esphome/**/src/": true,
-        "esphome/**/platformio.ini": true,
         "**/.cloud": true,
         "**/.storage": true,
         "**/.vscode": true,
@@ -20,6 +14,12 @@
         "**/home-assistant_v2.db": true,
         "**/deps": true,
         "**/tts": true,
-        "**/www": true
+        "**/www": true,
+        "esphome/.esphome/": true,
+        "esphome/**/.pioenvs/": true,
+        "esphome/**/.piolibdeps/": true,
+        "esphome/**/lib/": true,
+        "esphome/**/src/": true,
+        "esphome/**/platformio.ini": true
     }
 }
