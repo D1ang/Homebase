@@ -1,0 +1,39 @@
+# When the right switch is pressed turn the studio spots on
+- alias: Studio lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.studio_schakelaar_right
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.studio_spots
+
+# When the right switch is pressed turn the studio spots off
+- alias: Studio lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.studio_schakelaar_right
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.studio_spots
+
+# When the app is used turn the studio spots on
+- alias: Studio schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.studio_spots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.studio_schakelaar_right
+
+# When the app is used turn the studio spots off
+- alias: Studio schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.studio_spots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.studio_schakelaar_right
