@@ -33,15 +33,10 @@ map:
 input_select: !include platforms/options.yaml
 
 ### HARDWARE & SOFTWARE PLATFORMS ###
+zha: !include platforms/zigbee.yaml
 rfxtrx: !include platforms/rfxcom.yaml
-zha:
-  zigpy_config:
-    ota:
-      ikea_provider: true
-
 nest: !include platforms/nest.yaml
 nissan_leaf: !include platforms/nissan.yaml
-influxdb: !include platforms/influxdb.yaml
 
 ### LIGHTS ###
 light 1: !include devices/lights/milights.yaml

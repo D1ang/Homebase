@@ -1,0 +1,4 @@
+### ZIGBEE PLATFORM ###  
+zigpy_config:
+  ota:
+    ikea_provider: true
