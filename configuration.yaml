@@ -25,7 +25,7 @@ automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 
 ### WEATHER AND LOCATIONS ###
-weather: !include platforms/weather.yaml
+weather:
 sun:
 map:
 
@@ -39,7 +39,7 @@ nest: !include platforms/nest.yaml
 nissan_leaf: !include platforms/nissan.yaml
 
 ### LIGHTS ###
-light 1: !include devices/lights/milights.yaml
+light: !include devices/lights/milights.yaml
 
 ### SENSORS ###
 sensor: !include devices/sensors/sensors.yaml
