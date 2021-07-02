@@ -1,5 +1,5 @@
 esphome:
-  name: trapluik
+  name: studiosfeerspots
   platform: ESP8266
   board: esp01_1m
 
@@ -7,7 +7,7 @@ wifi:
   ssid: !secret IoT_ssid
   password: !secret IoT_password
   manual_ip:
-    static_ip: 192.168.10.48
+    static_ip: 192.168.10.7
     gateway: 192.168.10.1
     subnet: 255.255.255.0
     dns1: 192.168.10.1
@@ -23,7 +23,7 @@ ota:
 
 switch:
   - platform: gpio
-    name: Trapluik
+    name: Studio sfeerspots
     id: relay
     pin: GPIO12
     on_turn_on:
