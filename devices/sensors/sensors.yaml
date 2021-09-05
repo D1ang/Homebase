@@ -1,3 +1,5 @@
+- platform: dsmr_reader
+
 - platform: template
   sensors:
     wasmachine_status:
@@ -9,9 +11,6 @@
     droger_status:
       value_template: '{{ states.input_select.droger_status.state}}'
       friendly_name: 'Droger status'
-
-- platform: dsmr_reader
-
 
 - platform: template
   sensors:
