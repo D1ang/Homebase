@@ -11,7 +11,7 @@
   action:
   - type: turn_on
     device_id: a084e2ad152711ebb5951536f60f7f42
-    entity_id: switch.toilet_spots
+    entity_id: switch.toilet_sfeerspots
     domain: switch
   mode: single
 
@@ -29,11 +29,11 @@
   - condition: device
     type: is_on
     device_id: a084e2ad152711ebb5951536f60f7f42
-    entity_id: switch.toilet_spots
+    entity_id: switch.toilet_sfeerspots
     domain: switch
   action:
   - type: turn_off
     device_id: a084e2ad152711ebb5951536f60f7f42
-    entity_id: switch.toilet_spots
+    entity_id: switch.toilet_sfeerspots
     domain: switch
   mode: single

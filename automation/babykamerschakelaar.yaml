@@ -47,7 +47,7 @@
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.babykamer_vloerlampen
+    entity_id: light.babykamer_vloerlampen
 
 # When the right switch is pressed turn the babyroom vloorlamp off
 - alias: Babykamer vloerlamp uit status
@@ -57,13 +57,13 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.babykamer_vloerlampen
+    entity_id: light.babykamer_vloerlampen
 
 # When the app is used turn the babyroom vloorlamp on
 - alias: Babykamer vloerlamp schakelaar aan status
   trigger:
     platform: state
-    entity_id: switch.babykamer_vloerlampen
+    entity_id: light.babykamer_vloerlampen
     to: 'on'
   action:
   - service: homeassistant.turn_on
@@ -73,7 +73,7 @@
 - alias: Babykamer vloerlamp schakelaar uit status
   trigger:
     platform: state
-    entity_id: switch.babykamer_vloerlampen
+    entity_id: light.babykamer_vloerlampen
     to: 'off'
   action:
   - service: homeassistant.turn_off

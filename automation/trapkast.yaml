@@ -2,7 +2,7 @@
 - alias: Trapkast deur open
   initial_state: 'on'
   trigger:
-  - entity_id: binary_sensor.trapkast_door
+  - entity_id: binary_sensor.trapkast_sensor
     from: 'off'
     platform: state
     to: 'on'
@@ -14,7 +14,7 @@
 - alias: Trapkast deur gesloten
   initial_state: 'on'
   trigger:
-  - entity_id: binary_sensor.trapkast_door
+  - entity_id: binary_sensor.trapkast_sensor
     from: 'on'
     platform: state
     to: 'off'
