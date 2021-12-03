@@ -1,4 +1,4 @@
 # Homebase
 Home Assistant configurations
 
-[![Build Status](https://travis-ci.org/D1ang/Homebase.svg?branch=master)](https://travis-ci.org/D1ang/Homebase)
+[![Build Status](https://app.travis-ci.com/D1ang/Digipress.svg?branch=main)](https://app.travis-ci.com/D1ang/Digipress)
