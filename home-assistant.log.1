@@ -1,8 +1,21 @@
-2021-12-03 12:38:07 WARNING (SyncWorker_1) [homeassistant.loader] We found a custom integration daikin_residential which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2021-12-03 12:38:13 ERROR (MainThread) [snitun.client.client_peer] Challenge/Response error with SniTun server (0 bytes read on a total of 32 expected bytes)
-2021-12-03 12:38:13 ERROR (MainThread) [hass_nabucasa.remote] Connection problem to snitun server
-2021-12-03 12:38:18 WARNING (SyncWorker_2) [homeassistant.components.nissan_leaf] WARNING: This may poll your Leaf too often, and drain the 12V battery.  If you drain your cars 12V battery it WILL NOT START as the drive train battery won't connect. Don't set the intervals too low
-2021-12-03 12:38:24 WARNING (SyncWorker_5) [homeassistant.helpers.service] Unable to find services.yaml for the daikin_residential integration
-2021-12-03 12:39:18 ERROR (SyncWorker_5) [pycarwings2.responses] could not establish communications with vehicle
-2021-12-03 12:39:18 ERROR (MainThread) [homeassistant.components.nissan_leaf] An error occurred communicating with the car SJNFAAZE0U6054061
-2021-12-03 12:43:50 ERROR (MainThread) [homeassistant.components.hassio.handler] Client error on /homeassistant/restart request Server disconnected
+2021-12-03 15:01:04 WARNING (SyncWorker_1) [homeassistant.loader] We found a custom integration daikin_residential which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2021-12-03 15:01:12 WARNING (SyncWorker_6) [homeassistant.helpers.service] Unable to find services.yaml for the daikin_residential integration
+2021-12-03 15:01:16 WARNING (SyncWorker_3) [homeassistant.components.nissan_leaf] WARNING: This may poll your Leaf too often, and drain the 12V battery.  If you drain your cars 12V battery it WILL NOT START as the drive train battery won't connect. Don't set the intervals too low
+2021-12-03 15:02:14 ERROR (SyncWorker_7) [pycarwings2.responses] could not establish communications with vehicle
+2021-12-03 15:02:14 ERROR (MainThread) [homeassistant.components.nissan_leaf] An error occurred communicating with the car SJNFAAZE0U6054061
+2021-12-03 15:33:08 ERROR (SyncWorker_1) [pycarwings2.responses] could not establish communications with vehicle
+2021-12-03 15:33:08 ERROR (MainThread) [homeassistant.components.nissan_leaf] An error occurred communicating with the car SJNFAAZE0U6054061
+2021-12-03 16:03:59 ERROR (SyncWorker_1) [pycarwings2.responses] could not establish communications with vehicle
+2021-12-03 16:03:59 ERROR (MainThread) [homeassistant.components.nissan_leaf] An error occurred communicating with the car SJNFAAZE0U6054061
+2021-12-03 16:34:54 ERROR (SyncWorker_7) [pycarwings2.responses] could not establish communications with vehicle
+2021-12-03 16:34:54 ERROR (MainThread) [homeassistant.components.nissan_leaf] An error occurred communicating with the car SJNFAAZE0U6054061
+2021-12-03 16:56:38 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/entity.py", line 828, in _async_registry_updated
+    await self.async_remove(force_remove=True)
+  File "/usr/src/homeassistant/homeassistant/helpers/entity.py", line 739, in async_remove
+    await self.async_will_remove_from_hass()
+  File "/usr/src/homeassistant/homeassistant/components/deconz/deconz_device.py", line 80, in async_will_remove_from_hass
+    self.gateway.entities[self.TYPE].remove(self.unique_id)
+KeyError: '00:15:8d:00:05:2d:c2:44-01-0402'
+2021-12-03 17:01:21 ERROR (MainThread) [homeassistant.components.hassio.handler] Client error on /homeassistant/restart request Server disconnected
