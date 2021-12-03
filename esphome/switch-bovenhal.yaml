@@ -1,5 +1,5 @@
 substitutions:
-  device_name: bovenhalschakelaar
+  device_name: switch-bovenhal
   friendly_name: "Bovenhal schakelaar"
   api_password: !secret esphome_api
   ota_password: !secret esphome_ota

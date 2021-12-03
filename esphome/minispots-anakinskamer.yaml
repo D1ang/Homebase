@@ -1,5 +1,5 @@
 esphome:
-  name: studiosfeerspots
+  name: minispots-anakinskamer
   platform: ESP8266
   board: esp01_1m
 
@@ -23,7 +23,7 @@ ota:
 
 switch:
   - platform: gpio
-    name: Studio sfeerspots
+    name: Anakin's kamer sfeerspots
     id: relay
     pin: GPIO12
     on_turn_on:

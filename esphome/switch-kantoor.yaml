@@ -1,6 +1,6 @@
 substitutions:
-  device_name: anakinskamerschakelaar
-  friendly_name: "Anakin's kamer schakelaar"
+  device_name: switch-kantoor
+  friendly_name: "Kantoor schakelaar"
   api_password: !secret esphome_api
   ota_password: !secret esphome_ota
   
@@ -13,7 +13,7 @@ wifi:
   ssid: !secret IoT_ssid
   password: !secret IoT_password
   manual_ip:
-    static_ip: 192.168.10.23
+    static_ip: 192.168.10.26
     gateway: 192.168.10.1
     subnet: 255.255.255.0
     dns1: 192.168.10.1
