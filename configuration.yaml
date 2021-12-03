@@ -34,6 +34,7 @@ input_select: !include platforms/options.yaml
 ### HARDWARE & SOFTWARE PLATFORMS ###
 nest: !include platforms/nest.yaml
 nissan_leaf: !include platforms/nissan.yaml
+spotify: !include platforms/spotify.yaml
 
 ### LIGHTS ###
 light: !include devices/lights/milights.yaml
