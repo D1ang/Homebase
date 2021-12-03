@@ -25,7 +25,6 @@ automation: !include_dir_merge_list automation
 script: !include scripts.yaml
 
 ### WEATHER AND LOCATIONS ###
-weather:
 sun:
 map:
 
@@ -33,8 +32,6 @@ map:
 input_select: !include platforms/options.yaml
 
 ### HARDWARE & SOFTWARE PLATFORMS ###
-zha: !include platforms/zigbee.yaml
-rfxtrx: !include platforms/rfxcom.yaml
 nest: !include platforms/nest.yaml
 nissan_leaf: !include platforms/nissan.yaml
 
