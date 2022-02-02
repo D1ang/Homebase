@@ -15,4 +15,4 @@ home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 .vscode/settings.json
 
-*.log
+home-assistant.log.1
