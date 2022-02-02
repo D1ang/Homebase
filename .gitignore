@@ -11,8 +11,7 @@ deps
 tts
 www
 
-home-assistant_v2.db-shm
-home-assistant_v2.db-wal
-.vscode/settings.json
-
+*.db-shm
+*.db-wal
 home-assistant.log.1
+.vscode/settings.json
