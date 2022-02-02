@@ -1,43 +1,36 @@
-### MAIN SYSTEM ###
-homeassistant:
-
-  name: Homebase
-  latitude: !secret home_latitude
-  longitude: !secret home_longtitude
-  unit_system: metric
-  time_zone: Europe/Amsterdam
-
-  customize_domain: !include customize/customize_domain.yaml
+#---------------------------------MAIN SYSTEM----------------------------------#
 
 default_config:
 
-### LOGGING, UPDATING AND DEVICE DISCOVERING ###
-system_health:
-logbook:
-history:
-updater:
-discovery:
-stream:
+homeassistant:
+  customize_domain: !include customize/customize_domain.yaml
 
-### CUSTOMISATION ###
+http: 
+  use_x_forwarded_for: true 
+  trusted_proxies: !secret trusted_proxy
+  login_attempts_threshold: 3
+
+#--------------------------CUSTOMISATION & AUTOMATION--------------------------#
+
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
-script: !include scripts.yaml
 
-### WEATHER AND LOCATIONS ###
-sun:
-map:
+#----------------------------------SELECTORS-----------------------------------#
 
-### SELECTORS ###
 input_select: !include platforms/options.yaml
 
-### HARDWARE & SOFTWARE PLATFORMS ###
+#-------------------------HARDWARE & SOFTWARE PLATFORMS------------------------#
+
 nest: !include platforms/nest.yaml
+google_assistant: !include platforms/google_assistant.yaml
+tts: !include platforms/google_translate.yaml
 nissan_leaf: !include platforms/nissan.yaml
 spotify: !include platforms/spotify.yaml
 
-### LIGHTS ###
+#------------------------------------LIGHTS------------------------------------#
+
 light: !include devices/lights/milights.yaml
 
-### SENSORS ###
+#-----------------------------------SENSORS------------------------------------#
+
 sensor: !include devices/sensors/sensors.yaml
