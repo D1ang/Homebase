@@ -1,5 +1,6 @@
 # Sets the washing machine status to "Standby" when it is switched on from an off state
-- alias: Wasmachine status standby
+- id: '1640690420607'
+  alias: Wasmachine status standby
   trigger:
   - platform: state
     entity_id: switch.wasmachine
