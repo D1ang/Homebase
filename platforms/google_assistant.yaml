@@ -1,0 +1,12 @@
+project_id: intergration-47655
+service_account:
+  private_key: !secret google_assistant_key
+  client_email: !secret google_assistant_email
+report_state: true
+exposed_domains:
+  - switch
+  - light
+  - camera
+  - scene
+  - sensor
+  - script
