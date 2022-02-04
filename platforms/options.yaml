@@ -1,4 +1,6 @@
-### SELECTION MENU'S PLATFORM ###
+
+#------------------------WASHINGMACHINE STATUS SELECTOR------------------------#
+
 wasmachine_status:
   name: Wasmachine status
   options:
@@ -8,6 +10,8 @@ wasmachine_status:
     - Schoon
   initial: Standby
 
+#-----------------------------DRYER STATUS SELECTOR----------------------------#
+
 droger_status:
   name: Droger status
   options:
@@ -16,3 +20,4 @@ droger_status:
     - Afronden
     - Droog
   initial: Standby
+  

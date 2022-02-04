@@ -1,3 +1,6 @@
+
+#---------------------------NISSAN CAR INTERGRATION----------------------------#
+
 username: !secret nissan_username
 password: !secret nissan_password
 region: "NE"
