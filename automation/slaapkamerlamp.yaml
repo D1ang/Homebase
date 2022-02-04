@@ -1,0 +1,32 @@
+- id: '1643977657563'
+  alias: Slaapkamer schakelaar
+  description: ''
+  trigger:
+  - device_id: 3a9a07160a39e077a1a3114d7fb92df5
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 4289a560ef3c5fc83be175e02aaa3075
+    entity_id: light.slaapkamer_lamp
+    domain: light
+  mode: single
+- id: '1643977737177'
+  alias: Slaapkamer schakelaar off
+  description: ''
+  trigger:
+  - device_id: 3a9a07160a39e077a1a3114d7fb92df5
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 4289a560ef3c5fc83be175e02aaa3075
+    entity_id: light.slaapkamer_lamp
+    domain: light
+  mode: single
