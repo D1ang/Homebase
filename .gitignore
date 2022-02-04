@@ -1,17 +1,33 @@
-.cloud
-.storage
+#------------------------------------VSCODE------------------------------------#
+
 .vscode
 .vscode/settings.json
-secrets.yaml
-esphome/secrets.yaml
+
+#-----------------------------------STORAGE------------------------------------#
+
+.cloud
+.storage
+event_media
+
+#-----------------------------------ESPHOME------------------------------------#
+
 esphome/.esphome
+esphome/secrets.yaml
+
+#-----------------------------LOG & DATABASE FILES-----------------------------#
+
 home-assistant.log
+home-assistant.log.1
 home-assistant_v2.db
+
+#----------------------------SYSTEM FILES & SECRETS----------------------------#
+
+*.db-wal
+*.db-shm
+secrets.yaml
+
+#--------------------------------VARIOUS FILES---------------------------------#
+
 deps
 tts
 www
-
-*.db-shm
-*.db-wal
-home-assistant.log.1
-.vscode/settings.json

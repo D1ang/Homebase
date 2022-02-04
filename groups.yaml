@@ -1,4 +1,5 @@
-### TUIN VERLICHTING GROUP ###
+#-----------------------------GARDEN LIGHTS GROUP------------------------------#
+
 tuinverlichting:
   name: Tuinlampen
   entities:
