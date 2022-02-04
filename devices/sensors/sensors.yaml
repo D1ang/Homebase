@@ -1,4 +1,9 @@
+
+#-----------------------------DSMR PROTOCOL READER-----------------------------#
+
 - platform: dsmr_reader
+
+#-------------------------WASHING MACHINE STATUS SENSOR------------------------#
 
 - platform: template
   sensors:
@@ -6,11 +11,15 @@
       value_template: '{{ states.input_select.wasmachine_status.state}}'
       friendly_name: 'Wasmachine status'
 
+#-----------------------------DRYER STATUS SENSOR------------------------------#
+
 - platform: template
   sensors:
     droger_status:
       value_template: '{{ states.input_select.droger_status.state}}'
       friendly_name: 'Droger status'
+
+#--------------------------NISSAN LEAF BATTERY STATUS--------------------------#
 
 - platform: template
   sensors:

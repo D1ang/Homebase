@@ -1,4 +1,6 @@
-### 3 MILIGHT DEVICES, 1 HOST ###
+
+#---------------------------3 MILIGHT DEVICES, 1 HOST--------------------------#
+
 - platform: limitlessled
   bridges:
    - host: 192.168.5.12
