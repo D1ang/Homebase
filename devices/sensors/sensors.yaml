@@ -18,21 +18,3 @@
     droger_status:
       value_template: '{{ states.input_select.droger_status.state}}'
       friendly_name: 'Droger status'
-
-#--------------------------NISSAN LEAF BATTERY STATUS--------------------------#
-
-- platform: template
-  sensors:
-    leaf_state:
-      value_template: "Opladen: {{ states('binary_sensor.leaf1djan_charging_status') }}"
-    leaf_range_ac: 
-      value_template: "A/C Afstand: {{ states('sensor.leaf1djan_range_ac') }}"
-    leaf_range: 
-      value_template: "Afstand: {{ states('sensor.leaf1djan_range') }}"
-    leaf_battery:
-      unit_of_measurement: '%'
-      value_template: "{{ states('sensor.leaf1djan_charge') }}"
-      icon_template: "{%- if states.sensor.leaf1djan_charge.state >= '95' %}mdi:battery
-                      {%- elif states.sensor.leaf1djan_charge.state == '100' %}mdi:battery
-                      {%- elif states.sensor.leaf1djan_charge.state <= '15' %}mdi:battery-outline
-                      {% else %}mdi:battery-{{(states.sensor.leaf1djan_charge.state|float / 10)|round*10}}{%- endif %}"
