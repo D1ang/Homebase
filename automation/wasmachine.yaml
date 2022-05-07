@@ -87,7 +87,7 @@
     entity_id: sensor.wasmachine_status
     to: Schoon
   action:
-  - service: notify.mobile_app_oneplus_nord
+  - service: notify.mobile_app_galaxy_s21
     data:
       message: De wasmachine is klaar!
       title: Wasmachine
