@@ -25,7 +25,6 @@ input_select: !include platforms/options.yaml
 nest: !include platforms/nest.yaml
 google_assistant: !include platforms/google_assistant.yaml
 tts: !include platforms/google_translate.yaml
-spotify: !include platforms/spotify.yaml
 
 #------------------------------------LIGHTS------------------------------------#
 
