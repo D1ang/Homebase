@@ -4,6 +4,7 @@
 tuinverlichting:
   name: Tuinlampen
   entities:
-    - switch.achtertuin_verlichting
-    - light.achtergevel_lamp
+    - light.schuur_buitenlamp
     - light.voordeur_lamp
+    - light.achtergevel_lamp
+    - switch.achtertuin_verlichting
