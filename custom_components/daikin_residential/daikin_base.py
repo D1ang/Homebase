@@ -43,6 +43,8 @@ from homeassistant.components.climate.const import (
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
+    DEFAULT_MAX_TEMP,
+    DEFAULT_MIN_TEMP,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -121,7 +123,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return data["values"]
 
     async def setValue(self, param, value):
-        """Get the current value of a data object."""
+        """Set the current value of a data object."""
         cmd_set = self.getCommandSet(param)
         return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
 
@@ -167,12 +169,12 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return False
         return self.getValue(mode)
 
-    def set_preset_mode_status(self, mode, status):
+    async def set_preset_mode_status(self, mode, status):
         """Set the preset mode status."""
         mode = HA_PRESET_TO_DAIKIN[mode]
         if self.getData(mode) is None:
             return
-        return self.setValue(mode, status)
+        return await self.setValue(mode, status)
 
     @property
     def support_fan_rate(self):
@@ -271,6 +273,11 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return False
 
     @property
+    def support_inside_temperature(self):
+        """Return True if the device supports outsite temperature measurement."""
+        return self.getData(ATTR_INSIDE_TEMPERATURE) is not None
+
+    @property
     def support_outside_temperature(self):
         """Return True if the device supports outsite temperature measurement."""
         return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
@@ -278,11 +285,15 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     @property
     def outside_temperature(self):
         """Return current outside temperature."""
+        if not self.support_outside_temperature:
+            return None
         return float(self.getValue(ATTR_OUTSIDE_TEMPERATURE))
 
     @property
     def inside_temperature(self):
         """Return current inside temperature."""
+        if not self.support_inside_temperature:
+            return None
         return float(self.getValue(ATTR_INSIDE_TEMPERATURE))
 
     @property
@@ -293,6 +304,22 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return None
 
         return float(self.getValue(ATTR_TARGET_TEMPERATURE))
+
+    @property
+    def max_temp(self):
+        """Return the maximum temperature we are allowed to set."""
+        operationMode = self.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in ["auto", "cooling", "heating"]:
+            return DEFAULT_MAX_TEMP
+        return float(self.getData(ATTR_TARGET_TEMPERATURE)["maxValue"])
+
+    @property
+    def min_temp(self):
+        """Return the minimum temperature we are allowed to set."""
+        operationMode = self.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in ["auto", "cooling", "heating"]:
+            return DEFAULT_MIN_TEMP
+        return float(self.getData(ATTR_TARGET_TEMPERATURE)["minValue"])
 
     @property
     def target_temperature_step(self):
@@ -312,7 +339,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     @property
     def support_energy_consumption(self):
         """Return True if the device supports energy consumption monitoring."""
-        return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
+        return self.getData(ATTR_ENERGY_CONSUMPTION) is not None
 
     def energy_consumption(self, mode, period):
         """Return the last hour cool power consumption of a given mode in kWh."""
