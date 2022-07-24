@@ -1,10 +1,5 @@
 # Homebase
 
-Home Assistant configurations
-
-[![Build Status](https://app.travis-ci.com/D1ang/Homebase.svg?branch=main)](https://app.travis-ci.com/D1ang/Homebase)
-
-[![GitHub stars](https://img.shields.io/github/stars/geekofweek/homeassistant.svg?style=plasticr)](https://github.com/geekofweek/homeassistant/stargazers)
 [![GitHub last commit](https://img.shields.io/github/last-commit/geekofweek/homeassistant.svg?style=plasticr)](https://github.com/geekofweek/homeassistant/commits/master)
 [![HA Version](https://img.shields.io/badge/Running%20Home%20Assistant-2022.7.6%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
 [![HA Version](https://img.shields.io/badge/Original%20Home%20Assistant-0.14%20-darkblue)](https://github.com/home-assistant/core/releases/0.14)
@@ -21,12 +16,12 @@ My [Home Assistant - VM](https://home-assistant.io) configurations with automati
 
 | [Go to Menu](#menu) |
 
-| Device                | Intergration  | Connection      | Home Assistant    | Notes                              |
-| :-------------------- | :-----------: | :-------------- | :---------------- | ---------------------------------- |
-| Conbee II             | Local         | USB  -> Zigbee  | deCONZ            | Used to control all Zigbee Devices |
-| RFXtrx                | Local         | USB  -> 433 MHz | RFXcom            | Used to control all Screens        |
-| Logitech Harmony Hub  | Local         | Wifi -> IR      | Homebase Hub      | Used to control IR remote devices  |
-| MiLight               | Local         | Wifi -> 433 MHz | LimitlessLED      | Used to control Office spots       |
+| Device                | Intergration  | Connection      | Home Assistant    | Notes              |
+| :-------------------- | :-----------: | :-------------- | :---------------- | ------------------ |
+| Conbee II             | Local         | USB  -> Zigbee  | deCONZ            | All Zigbee Devices |
+| RFXtrx                | Local         | USB  -> 433 MHz | RFXcom            | All Screens        |
+| Logitech Harmony Hub  | Local         | Wifi -> IR      | Homebase Hub      | IR remote devices  |
+| MiLight               | Local         | Wifi -> 433 MHz | LimitlessLED      | Office spots       |
 
 Relevant configurations can be found within [configuration.yaml](https://github.com/geekofweek/homeassistant/blob/master/configuration.yaml)
 
