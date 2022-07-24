@@ -216,3 +216,6 @@ More detailed information on the custom Home Assistant Managment Tools can be fo
 **customize_domain.yml**
 In the customize folder `asumed state` is set to `false` to remove the lighting bolts
 and replace them with toggle buttons.
+
+EXAMPLE FOR FUTURE:
+https://github.com/basnijholt/home-assistant-config
