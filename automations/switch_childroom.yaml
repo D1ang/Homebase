@@ -1,0 +1,84 @@
+
+# ------------------------------- Button middle ------------------------------ #
+
+- id: SWM-CHRM-001
+  alias: Kantoor sfeerspots aan status
+  trigger:
+    platform: state
+    entity_id: switch.childroom_middle
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.anakins_sfeerspots
+
+- id: SWM-CHRM-002
+  alias: Kantoor sfeerspots uit status
+  trigger:
+    platform: state
+    entity_id: switch.childroom_middle
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.anakins_sfeerspots
+
+- id: SWM-CHRM-003
+  alias: Kantoor sfeerspots schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: switch.anakins_sfeerspots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.childroom_middle
+
+- id: SWM-CHRM-004
+  alias: Kantoor sfeerspots schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: switch.anakins_sfeerspots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.childroom_middle
+
+# ------------------------------- Button right ------------------------------- #
+
+- id: SWR-CHRM-001
+  alias: Salon lampen aan status
+  trigger:
+    platform: state
+    entity_id: switch.childroom_right
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.anakins_lamp
+
+- id: SWR-CHRM-002
+  alias: Salon lampen uit status
+  trigger:
+    platform: state
+    entity_id: switch.childroom_right
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.anakins_lamp
+
+- id: SWR-CHRM-003
+  alias: Salon schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.anakins_lamp
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.childroom_right
+
+- id: SWR-CHRM-004
+  alias: Salon schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.anakins_lamp
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.childroom_right

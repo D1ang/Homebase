@@ -1,5 +1,11 @@
+substitutions:
+  device_name: switch-babyroom
+  friendly_name: "switch babyroom"
+  api_password: !secret esphome_api
+  ota_password: !secret esphome_ota
+
 esphome:
-  name: switch-babykamer
+  name: ${device_name}
   platform: ESP8266
   board: esp01_1m
 
@@ -23,11 +29,11 @@ ota:
 
 switch:
   - platform: gpio
-    name: Babykamer lamp schakelaar
+    name: ${friendly_name} button left
     id: relay1
     pin: GPIO12
   - platform: gpio
-    name: Babykamer vloerlampen schakelaar
+    name: ${friendly_name} button right
     id: relay2
     pin: GPIO5
 
@@ -37,7 +43,7 @@ binary_sensor:
       number: GPIO0
       mode: INPUT_PULLUP
       inverted: True
-    name: "Babykamer lamp schakelaar"
+    name: "${friendly_name} button left"
     on_press:
       - switch.toggle: relay1
   - platform: gpio
@@ -45,7 +51,7 @@ binary_sensor:
       number: GPIO9
       mode: INPUT_PULLUP
       inverted: True
-    name: "Babykamer vloerlampen schakelaar"
+    name: "${friendly_name} button right"
     on_press:
       - switch.toggle: relay2
 

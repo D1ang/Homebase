@@ -1,6 +1,6 @@
 substitutions:
-  device_name: switch-kantoor
-  friendly_name: "Kantoor schakelaar"
+  device_name: switch-office
+  friendly_name: "switch office"
   api_password: !secret esphome_api
   ota_password: !secret esphome_ota
   

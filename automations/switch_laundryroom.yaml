@@ -1,0 +1,84 @@
+
+# -------------------------------- Button left ------------------------------- #
+
+- id: SWL-WASH-001
+  alias: Trap spot aan status
+  trigger:
+    platform: state
+    entity_id: switch.laundryroom_left
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.boventrap_paneel
+
+- id: SWL-WASH-002
+  alias: Trap spot uit status
+  trigger:
+    platform: state
+    entity_id: switch.laundryroom_left
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.boventrap_paneel
+
+- id: SWL-WASH-003
+  alias: Trap schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: light.boventrap_paneel
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.laundryroom_left
+
+- id: SWL-WASH-004
+  alias: Trap schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: light.boventrap_paneel
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.laundryroom_left
+
+# ------------------------------- Button right ------------------------------- #
+
+- id: SWR-WASH-001
+  alias: Trap spot aan status
+  trigger:
+    platform: state
+    entity_id: switch.laundryroom_right
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.wasruimte_sfeerspots
+
+- id: SWR-WASH-002
+  alias: Trap spot uit status
+  trigger:
+    platform: state
+    entity_id: switch.laundryroom_right
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.wasruimte_sfeerspots
+
+- id: SWR-WASH-003
+  alias: Trap schakelaar aan status
+  trigger:
+    platform: state
+    entity_id: switch.wasruimte_sfeerspots
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.laundryroom_right
+
+- id: SWR-WASH-004
+  alias: Trap schakelaar uit status
+  trigger:
+    platform: state
+    entity_id: switch.wasruimte_sfeerspots
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.laundryroom_right
