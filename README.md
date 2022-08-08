@@ -17,7 +17,7 @@ My [Home Assistant - VM](https://home-assistant.io) configurations with automati
 | [Go to menu](#Menu) |
 
 | Device                     | Intergration  | Connection      | Home Assistant    | Notes              |
-| :------------------------- | :------------ | :-------------- | :---------------- | ------------------ |
+| :------------------------- | :------------ | :-------------- | :---------------- | :----------------- |
 | Conbee II                  | Local         | USB  -> ZiBbee  | deCONZ            | All Zigbee devices |
 | Sonoff ZigBee 3.0 Dongle + | Local         | USB  -> ZigBee  | Zigbee2MQtt       | All Zigbee devices |
 | RFXtrx                     | Local         | USB  -> 433 MHz | RFXcom            | All screens        |
@@ -35,7 +35,7 @@ The Conbee II wil be replaced by the Sonoff ZigBee 3.0 Dongel + after all ZigBee
 | [Go to Menu](#menu) | [Home Screenshot](images/home-screenshot.jpg?raw=true "Home Page") |
 
 | Device                | Intergration     | Connection    | Home Assistant    | Notes                              |
-| :-------------------- | :--------------- | :------------ | :---------------- | ---------------------------------- |
+| :-------------------- | :--------------- | :------------ | :---------------- | :--------------------------------- |
 | Smart meter Gateway   | Local            | P1 -> Wifi    | DSMR reader       | Collects data from smart meter     |
 | GoodWe GW3000D-NS     | Depends on cloud | Wifi          | GoodWe inverter   | Solar power inverter               |
 | DSMR reader           | Local            | Wired -> MQTT | DSMR reader       | Django installation on server VM   |
