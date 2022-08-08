@@ -1,4 +1,7 @@
-# Turn the kitchen window lamp on 15 minutes before sundown.
+
+# -------------------------- Kitchen window lamp on -------------------------- #
+
+# Turn the kitchen window lamp on 15 minutes before sundown
 - alias: Keukenraam zonsondergang aan
   trigger:
     platform: sun
@@ -6,7 +9,9 @@
     offset: -00:15:00
   action:
     service: homeassistant.turn_on
-    entity_id: switch.keukenraam_lamp
+    entity_id: switch.kitchen_window_lamp
+
+# ------------------------- Kitchen window lamp off -------------------------- #
 
 # Turn the kitchen window lamp off at 12:30 AM
 - alias: Keukenraam schakelklok
@@ -15,4 +20,4 @@
     at: 00:30:00
   action:
     service: homeassistant.turn_off
-    entity_id: switch.keukenraam_lamp
+    entity_id: switch.kitchen_window_lamp
