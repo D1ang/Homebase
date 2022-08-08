@@ -16,24 +16,39 @@ My [Home Assistant - VM](https://home-assistant.io) configurations with automati
 
 | [Go to menu](#Menu) |
 
-| Device                | Intergration  | Connection      | Home Assistant    | Notes              |
-| :-------------------- | :-----------: | :-------------- | :---------------- | ------------------ |
-| Conbee II             | Local         | USB  -> Zigbee  | deCONZ            | All Zigbee Devices |
-| RFXtrx                | Local         | USB  -> 433 MHz | RFXcom            | All Screens        |
-| Logitech Harmony Hub  | Local         | Wifi -> IR      | Homebase Hub      | IR remote devices  |
-| MiLight               | Local         | Wifi -> 433 MHz | LimitlessLED      | Office spots       |
+| Device                     | Intergration  | Connection      | Home Assistant    | Notes              |
+| :------------------------- | :-----------: | :-------------- | :---------------- | ------------------ |
+| Conbee II                  | Local         | USB  -> ZiBbee  | deCONZ            | All Zigbee devices |
+| Sonoff ZigBee 3.0 Dongle + | Local         | USB  -> ZigBee  | Zigbee2MQtt       | All Zigbee devices |
+| RFXtrx                     | Local         | USB  -> 433 MHz | RFXcom            | All screens        |
+| Logitech Harmony Hub       | Local         | Wifi -> IR      | Homebase Hub      | IR remote devices  |
+| MiLight                    | Local         | Wifi -> 433 MHz | LimitlessLED      | Office spots       |
 
-Relevant configurations can be found within [configuration.yaml](https://github.com/geekofweek/homeassistant/blob/master/configuration.yaml)
+Relevant configurations can be found within [configuration.yaml](https://github.com/D1ang/Homebase/blob/master/configuration.yaml)
+
+🚩**decrement warning!**
+The Conbee II wil be replaced by the Sonoff ZigBee 3.0 Dongel + after all ZigBee devices are transfered.
+
 
 ## Energy
 
 | [Go to Menu](#menu) | [Home Screenshot](images/home-screenshot.jpg?raw=true "Home Page") |
 
-| Device                | Intergration  | Connection    | Home Assistant    | Notes                              |
-| :-------------------- | :-----------: | :------------ | :---------------- | ---------------------------------- |
-| Conbee II             | Local         | USB           | deCONZ            | Used to control all Zigbee Devices |
-| RFXtrx                | Local         | USB           | RFXcom            | Used to control all Screens        |
-| Logitech Harmony Hub  | Local         | Wifi          | Homebase Hub      | Used to control IR remote devices  |
+| Device                | Intergration     | Connection    | Home Assistant    | Notes                              |
+| :-------------------- | :--------------: | :------------ | :---------------- | ---------------------------------- |
+| Smart meter Gateway   | Local            | P1 -> Wifi    | DSMR reader       | Collects data from smart meter     |
+| GoodWe GW3000D-NS     | Depends on cloud | Wifi          | GoodWe inverter   | Solar power inverter               |
+| DSMR reader           | Local            | Wired -> MQTT | DSMR reader       | Django installation on server VM   |
+
+Relevant configurations can be found mostly within [sensors.yaml](https://github.com/D1ang/Homebase/blob/master/devices/sensors/sensors.yaml)
+
+Future plans are:
+
+ - to convert the VM installation of DSMR reader to a docker based container.
+ - Change the smart Gateway meter to MQTT only.
+ - To change the GoodWe inverter so, that it will collect data locally see [this link](https://gitlab.com/sircuri/goodweusblogger) and removing cloud dependencie.
+
+
 
 Many of my automations rely on some form of lighting but many examples can be found in [lights.yaml](https://github.com/geekofweek/homeassistant/blob/master/automation/lights.yaml) and [location.yaml](https://github.com/geekofweek/homeassistant/blob/master/automation/location.yaml).
 
