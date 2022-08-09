@@ -7,7 +7,7 @@
   - type: motion
     platform: device
     device_id: ac2b262c05b111ebb642d12a10912f97
-    entity_id: binary_sensor.toilet_sensor
+    entity_id: binary_sensor.toilet_sensor_occupancy
     domain: binary_sensor
     for:
       seconds: 3
@@ -26,7 +26,7 @@
   - type: no_motion
     platform: device
     device_id: ac2b262c05b111ebb642d12a10912f97
-    entity_id: binary_sensor.toilet_sensor
+    entity_id: binary_sensor.toilet_sensor_occupancy
     domain: binary_sensor
     for:
       minutes: 5
