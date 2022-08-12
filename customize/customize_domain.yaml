@@ -1,5 +1,5 @@
 
-#-------------------------SET LIGHT SWITCHES TO TOGGLE-------------------------#
+# ----------------------- Set light switches to toggle ----------------------- #
 
 light:
   assumed_state: false
