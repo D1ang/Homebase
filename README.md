@@ -172,29 +172,6 @@ The iOS app is used for some notifications within various automations. The nativ
 
 More detailed information on the custom Home Assistant Managment Tools can be found [here](https://github.com/geekofweek/homeassistant/tree/master/tools).
 
-# <a name="screenshots">Screenshots</a>
-
-| [Go to Menu](#menu) |
-
-![UI](images/home-screenshot.jpg?raw=true "Home Page")
-![UI](images/living-room-screenshot.jpg?raw=true "Living Room")
-![UI](images/dining-screenshot.jpg?raw=true "Dining and Kitchen")
-![UI](images/bedrooms-screenshot.jpg?raw=true "Bedrooms")
-![UI](images/bath-screenshot.jpg?raw=true "Bathrooms")
-![UI](images/offices-screenshot.jpg?raw=true "Offices")
-![UI](images/basement-screenshot.jpg?raw=true "Basement")
-![UI](images/upstairs-screenshot.jpg?raw=true "Upstairs")
-![UI](images/outdoor-screenshot.jpg?raw=true "Outdoors")
-![UI](images/garage-screenshot.jpg?raw=true "Garage")
-![UI](images/weather-screenshot.jpg?raw=true "Weather")
-![UI](images/media-screenshot.jpg?raw=true "Media")
-![UI](images/camera-screenshot.jpg?raw=true "Cameras")
-![UI](images/location-screenshot.jpg?raw=true "Location")
-![UI](images/3d-printer-screenshot.jpg?raw=true "3D Printer")
-![UI](images/alarm-screenshot.jpg?raw=true "Alarm")
-![UI](images/system-screenshot.jpg?raw=true "System")
-![UI](images/battery-screenshot.jpg?raw=true "Battery")
-
 | [Go to Menu](#menu) |
 
 ## Custom settings
