@@ -9,7 +9,7 @@
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: light.babykamer_lamp
+    entity_id: light.babyroom_lamp
 
 - id: SWL-BABR-002
   alias: Babykamer lamp uit status
@@ -19,13 +19,13 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: light.babykamer_lamp
+    entity_id: light.babyroom_lamp
 
 - id: SWL-BABR-003
   alias: Babykamer schakelaar aan status
   trigger:
     platform: state
-    entity_id: light.babykamer_lamp
+    entity_id: light.babyroom_lamp
     to: 'on'
   action:
   - service: homeassistant.turn_on
@@ -35,7 +35,7 @@
   alias: Babykamer schakelaar uit status
   trigger:
     platform: state
-    entity_id: light.babykamer_lamp
+    entity_id: light.babyroom_lamp
     to: 'off'
   action:
   - service: homeassistant.turn_off
@@ -51,7 +51,7 @@
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: light.babykamer_vloerlamp
+    entity_id: light.babyroom_floorlamps
 
 - id: SWR-BABR-002
   alias: Babykamer vloerlamp uit status
@@ -61,13 +61,13 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: light.babykamer_vloerlamp
+    entity_id: light.babyroom_floorlamps
 
 - id: SWR-BABR-003
   alias: Babykamer vloerlamp schakelaar aan status
   trigger:
     platform: state
-    entity_id: light.babykamer_vloerlamp
+    entity_id: light.babyroom_floorlamps
     to: 'on'
   action:
   - service: homeassistant.turn_on
@@ -77,7 +77,7 @@
   alias: Babykamer vloerlamp schakelaar uit status
   trigger:
     platform: state
-    entity_id: light.babykamer_vloerlamp
+    entity_id: light.babyroom_floorlamps
     to: 'off'
   action:
   - service: homeassistant.turn_off

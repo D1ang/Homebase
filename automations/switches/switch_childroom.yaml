@@ -51,7 +51,7 @@
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: light.anakins_lamp
+    entity_id: light.childroom_spots
 
 - id: SWR-CHRM-002
   alias: Salon lampen uit status
@@ -61,13 +61,13 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: light.anakins_lamp
+    entity_id: light.childroom_spots
 
 - id: SWR-CHRM-003
   alias: Salon schakelaar aan status
   trigger:
     platform: state
-    entity_id: light.anakins_lamp
+    entity_id: light.childroom_spots
     to: 'on'
   action:
   - service: homeassistant.turn_on
@@ -77,7 +77,7 @@
   alias: Salon schakelaar uit status
   trigger:
     platform: state
-    entity_id: light.anakins_lamp
+    entity_id: light.childroom_spots
     to: 'off'
   action:
   - service: homeassistant.turn_off

@@ -86,7 +86,7 @@
 # ------------------------------- Button right ------------------------------- #
 
 - id: SWR-OFFC-001
-  alias: Salon lampen aan status
+  alias: Studio lampen aan status
   trigger:
     platform: state
     entity_id: switch.office_right
@@ -96,7 +96,7 @@
     entity_id: light.studio_spots
 
 - id: SWR-OFFC-002
-  alias: Salon lampen uit status
+  alias: Studio lampen uit status
   trigger:
     platform: state
     entity_id: switch.office_right
@@ -106,7 +106,7 @@
     entity_id: light.studio_spots
 
 - id: SWR-OFFC-003
-  alias: Salon schakelaar aan status
+  alias: Studio schakelaar aan status
   trigger:
     platform: state
     entity_id: light.studio_spots
@@ -116,7 +116,7 @@
     entity_id: switch.office_right
 
 - id: SWR-OFFC-004
-  alias: Salon schakelaar uit status
+  alias: Studio schakelaar uit status
   trigger:
     platform: state
     entity_id: light.studio_spots

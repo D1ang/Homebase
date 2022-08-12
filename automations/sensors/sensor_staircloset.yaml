@@ -11,7 +11,7 @@
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: light.trapkast_lamp
+    entity_id: light.stair_closet_lamp
 
 # ---------------------------- Closet lights off ----------------------------- #
 
@@ -25,4 +25,4 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: light.trapkast_lamp
+    entity_id: light.stair_closet_lamp
