@@ -18,17 +18,12 @@ My [Home Assistant - VM](https://home-assistant.io) configurations with automati
 
 | Device                     | Intergration  | Connection      | Home Assistant    | Notes              |
 | :------------------------- | :------------ | :-------------- | :---------------- | :----------------- |
-| Conbee II                  | Local         | USB  -> ZiBbee  | deCONZ            | All Zigbee devices |
 | Sonoff ZigBee 3.0 Dongle + | Local         | USB  -> ZigBee  | Zigbee2MQtt       | All Zigbee devices |
 | RFXtrx                     | Local         | USB  -> 433 MHz | RFXcom            | All screens        |
 | Logitech Harmony Hub       | Local         | Wifi -> IR      | Homebase Hub      | IR remote devices  |
 | MiLight                    | Local         | Wifi -> 433 MHz | LimitlessLED      | Office spots       |
 
 Relevant configurations can be found within [configuration.yaml](https://github.com/D1ang/Homebase/blob/master/configuration.yaml)
-
-🚩**decrement warning!**
-The Conbee II wil be replaced by the Sonoff ZigBee 3.0 Dongel + after all ZigBee devices are transfered.
-
 
 ## Energy
 
@@ -52,13 +47,14 @@ Future plans are:
 
 | [Go to Menu](#menu) | [Daikin Residential Controller](https://github.com/rospogrigio/daikin_residential) |
 
-| Device                | Intergration     | Connection    | Home Assistant     | Notes                              |
-| :-------------------- | :--------------- | :------------ | :----------------- | ---------------------------------- |
-| Daikin                | Depens on cloud  | Wifi          | Daikin residential | Custom component to control Airo's |
+| Device                | Intergration      | Connection    | Home Assistant     | Notes                              |
+| :-------------------- | :---------------- | :------------ | :----------------- | ---------------------------------- |
+| Daikin                | Depends on cloud  | Wifi          | Daikin residential | Custom component to control Airo's |
+| Nest                  | Depends on cloud  | Wifi          | Google Nest        | Thermostat livingroom              |
+| Buienradar            | Depens on cloud   | Internet      | Buienradar         | Online weather station             |
 
-I utilize a number of automations that adjust climate controls.  Mostly they can be found in [climate.yaml](https://github.com/geekofweek/homeassistant/blob/master/automation/climate.yaml). Ecobee room sensors are heavily used in [occupancy.yaml](https://github.com/geekofweek/homeassistant/blob/master/automation/occupancy.yaml) and as conditions in many automations
-
-More detailed information on the ESPhome configuration can be found in [here](https://github.com/geekofweek/homeassistant/tree/master/esphome/garage_door_relay)
+As for now no automations are build. Daikin residential is a custom intergration used for the 5 installed airco units for heat, air filtering and cooling.
+Nest will be removed in the near future when we will remove the gaspipe. Buienradar for now is only used in the dashboard.
 
 ## <a name="outlets">Outlets & Switches</a>
 
