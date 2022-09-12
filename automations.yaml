@@ -1,0 +1,204 @@
+- id: '1662148867626'
+  alias: Woonkamer gordijnen sluiten bij zonsondergang
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - device_id: 0bd7de79e0f73bd78ca86d6da960f1b7
+    domain: cover
+    entity_id: cover.livingroom_curtains_curtain
+    type: set_position
+    position: 0
+  mode: single
+- id: '1662150152632'
+  alias: Woonkamer gordijnen openen bij zonsopkomst
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - device_id: 0bd7de79e0f73bd78ca86d6da960f1b7
+    domain: cover
+    entity_id: cover.livingroom_curtains_curtain
+    type: set_position
+    position: 100
+  mode: single
+- id: '1662823411899'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.master_bedroom_lamp
+    - switch.master_bedoom_switch_l1
+    from: 'off'
+    to: 'on'
+    id: ON_I1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from off to
+      on
+  - platform: state
+    entity_id:
+    - light.master_bedroom_lamp
+    - switch.master_bedoom_switch_l1
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_I1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from on to
+      off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_I1
+      sequence:
+      - type: turn_on
+        device_id: 6697eb702c4a8999b00439c413ab4b05
+        entity_id: light.master_bedroom_lamp
+        domain: light
+        flash: short
+      - type: turn_on
+        device_id: dab1a0a4be68796827660f83051e4414
+        entity_id: switch.master_bedoom_switch_l1
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_I1
+      sequence:
+      - type: turn_off
+        device_id: 6697eb702c4a8999b00439c413ab4b05
+        entity_id: light.master_bedroom_lamp
+        domain: light
+      - type: turn_off
+        device_id: dab1a0a4be68796827660f83051e4414
+        entity_id: switch.master_bedoom_switch_l1
+        domain: switch
+    alias: I1 turn on or off
+  mode: single
+- id: '1663005344795'
+  alias: Babyroom switch
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.babyroom_lamp
+    - switch.babyroom_switch_l1
+    from: 'off'
+    to: 'on'
+    id: ON_l1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Babyroom lamp, or Babyroom switch I1 changes from off to on
+  - platform: state
+    entity_id:
+    - light.babyroom_lamp
+    - switch.babyroom_switch_l1
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Babyroom lamp, or Babyroom switch l1 changes from on to off
+  - platform: state
+    entity_id:
+    - light.babyroom_floorlamps
+    - switch.babyroom_switch_l2
+    from: 'off'
+    to: 'on'
+    id: ON_l2
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Babyroom floorlamps, or Babyroom switch l2 changes from off to on
+  - platform: state
+    entity_id:
+    - light.babyroom_floorlamps
+    - switch.babyroom_switch_l2
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l2
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Babyroom floorlamps, or Babyroom switch l2 changes from on to off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l1
+      sequence:
+      - type: turn_on
+        device_id: e6cde2b9db10f04126ad5d0f6f802a63
+        entity_id: light.babyroom_lamp
+        domain: light
+        flash: short
+      - type: turn_on
+        device_id: a6da439860e0be0a176c680bf44ab3bc
+        entity_id: switch.babyroom_switch_l1
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l1
+      sequence:
+      - type: turn_off
+        device_id: e6cde2b9db10f04126ad5d0f6f802a63
+        entity_id: light.babyroom_lamp
+        domain: light
+      - type: turn_off
+        device_id: a6da439860e0be0a176c680bf44ab3bc
+        entity_id: switch.babyroom_switch_l1
+        domain: switch
+    alias: I1 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l2
+      sequence:
+      - type: turn_on
+        device_id: 461c8e1c91cf2e45eddf64a79d5c7696
+        entity_id: light.babyroom_floorlamps
+        domain: light
+        flash: short
+      - type: turn_on
+        device_id: a6da439860e0be0a176c680bf44ab3bc
+        entity_id: switch.babyroom_switch_l2
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l2
+      sequence:
+      - type: turn_off
+        device_id: 461c8e1c91cf2e45eddf64a79d5c7696
+        entity_id: light.babyroom_floorlamps
+        domain: light
+      - type: turn_off
+        device_id: a6da439860e0be0a176c680bf44ab3bc
+        entity_id: switch.babyroom_switch_l2
+        domain: switch
+    alias: I2 turn on or off
+  mode: single
