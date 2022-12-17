@@ -14,7 +14,7 @@ My [Home Assistant - VM](https://home-assistant.io) configurations with automati
 
 ## Hubs
 
-| [Go to menu](#Menu) |
+| [Go to menu](#menu) |
 
 | Device                     | Intergration  | Connection      | Home Assistant    | Notes              |
 | :------------------------- | :------------ | :-------------- | :---------------- | :----------------- |
@@ -39,9 +39,9 @@ Relevant configurations can be found mostly within [sensors.yaml](https://github
 
 Future plans are:
 
- - to convert the VM installation of DSMR reader to a docker based container.
- - Change the smart Gateway meter to MQTT only.
- - To change the GoodWe inverter so, that it will collect data locally see [this link](https://gitlab.com/sircuri/goodweusblogger) and removing cloud dependencie.
+- to convert the VM installation of DSMR reader to a docker based container.
+- Change the smart Gateway meter to MQTT only.
+- To change the GoodWe inverter so, that it will collect data locally see [this link](https://gitlab.com/sircuri/goodweusblogger) and removing cloud dependencie.
 
 ## Climate
 
@@ -50,11 +50,10 @@ Future plans are:
 | Device                | Intergration      | Connection    | Home Assistant     | Notes                              |
 | :-------------------- | :---------------- | :------------ | :----------------- | ---------------------------------- |
 | Daikin                | Depends on cloud  | Wifi          | Daikin residential | Custom component to control Airo's |
-| Nest                  | Depends on cloud  | Wifi          | Google Nest        | Thermostat livingroom              |
 | Buienradar            | Depens on cloud   | Internet      | Buienradar         | Online weather station             |
 
 As for now no automations are build. Daikin residential is a custom intergration used for the 5 installed airco units for heat, air filtering and cooling.
-Nest will be removed in the near future when we will remove the gaspipe. Buienradar for now is only used in the dashboard.
+Buienradar for now is only used in the dashboard.
 
 | [Go to Menu](#menu) |
 
