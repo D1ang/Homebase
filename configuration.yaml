@@ -22,7 +22,6 @@ input_select: !include platforms/options.yaml
 
 #-------------------------HARDWARE & SOFTWARE PLATFORMS------------------------#
 
-google_assistant: !include platforms/google_assistant.yaml
 tts: !include platforms/google_translate.yaml
 
 #------------------------------------LIGHTS------------------------------------#
