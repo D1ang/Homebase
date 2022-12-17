@@ -1,8 +1,4 @@
 
-#-----------------------------DSMR PROTOCOL READER-----------------------------#
-
-- platform: dsmr_reader
-
 #-------------------------WASHING MACHINE STATUS SENSOR------------------------#
 
 - platform: template
