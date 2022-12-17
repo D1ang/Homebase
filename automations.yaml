@@ -4,7 +4,7 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: 0
+    offset: 00:30:00
   condition: []
   action:
   - device_id: 0bd7de79e0f73bd78ca86d6da960f1b7
@@ -201,4 +201,84 @@
         entity_id: switch.babyroom_switch_l2
         domain: switch
     alias: I2 turn on or off
+  mode: single
+- id: '1665435760393'
+  alias: Zet woonkamer verlichting uit
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 3f1dcad8cf6dc3812238faffb9b5b26e
+    type: action
+    subtype: 'off'
+    discovery_id: 0x50325ffffeaf1e47 action_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 9d359cdc400f8d03ba46d74f3f2b8411
+    entity_id: light.livingroom_left_spots
+    domain: light
+  - type: turn_off
+    device_id: bbbe26b7d765d6a6a00149f10f994c95
+    entity_id: light.livingroom_middle_spots
+    domain: light
+  - type: turn_off
+    device_id: c610178be0457139c36e1e4dfec98bdd
+    entity_id: light.livingroom_right_spots
+    domain: light
+  - type: turn_off
+    device_id: 16a218e266dc584aa3fb16732fd219eb
+    entity_id: light.fireplace_spots
+    domain: light
+  - type: turn_off
+    device_id: 113d578b45386ecb87df25ccc776e2d9
+    entity_id: light.livingroom_lamp
+    domain: light
+  mode: single
+- id: '1666611020865'
+  alias: Kinderkamer gordijnen sluiten om 18:30
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:30:00'
+    id: CLOSE
+  - platform: time
+    at: 09:00:00
+    id: OPEN
+  condition: []
+  action:
+  - if:
+    - condition: trigger
+      id: CLOSE
+    then:
+    - device_id: 1ae5e103ce22c76d23e5dcf79a4e2e82
+      domain: cover
+      entity_id: cover.childroom_curtains_curtain
+      type: set_position
+      position: 0
+  - if:
+    - condition: trigger
+      id: OPEN
+    then:
+    - device_id: 1ae5e103ce22c76d23e5dcf79a4e2e82
+      domain: cover
+      entity_id: cover.childroom_curtains_curtain
+      type: set_position
+      position: 100
+  mode: single
+- id: '1671275043066'
+  alias: Toilet bewegingssensor
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 791424fb16e29de73c8fd150e8cb9efc
+    entity_id: binary_sensor.toilet_sensor_occupancy
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 7c9839ad2f5475f7b6bd040d0a1ca225
+    entity_id: switch.toilet_ambiance_spots
+    domain: switch
   mode: single
