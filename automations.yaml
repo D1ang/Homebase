@@ -275,10 +275,38 @@
     device_id: 791424fb16e29de73c8fd150e8cb9efc
     entity_id: binary_sensor.toilet_sensor_occupancy
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+    id: TOILET_MOTION
+  - type: no_motion
+    platform: device
+    device_id: 791424fb16e29de73c8fd150e8cb9efc
+    entity_id: binary_sensor.toilet_sensor_occupancy
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: TOILET_NOMOTION
   condition: []
   action:
-  - type: turn_on
-    device_id: 7c9839ad2f5475f7b6bd040d0a1ca225
-    entity_id: switch.toilet_ambiance_spots
-    domain: switch
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: TOILET_MOTION
+      sequence:
+      - type: turn_on
+        device_id: 7c9839ad2f5475f7b6bd040d0a1ca225
+        entity_id: switch.toilet_ambiance_spots
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: TOILET_NOMOTION
+      sequence:
+      - type: turn_off
+        device_id: 7c9839ad2f5475f7b6bd040d0a1ca225
+        entity_id: switch.toilet_ambiance_spots
+        domain: switch
   mode: single
