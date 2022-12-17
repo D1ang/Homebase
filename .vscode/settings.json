@@ -26,5 +26,6 @@
         "esphome/**/lib/": true,
         "esphome/**/src/": true,
         "esphome/**/platformio.ini": true
-    }
+    },
+    "workspace.isHidden": true
 }
