@@ -1,7 +1,39 @@
 
-#---------------------------------MAIN SYSTEM----------------------------------#
+#--------------------------------DEFAULT CONFIG--------------------------------#
 
-default_config:
+# default_config:
+application_credentials:
+automation:
+counter:
+dhcp:
+energy:
+frontend:
+history:
+input_boolean:
+input_button:
+input_datetime:
+input_number:
+input_text:
+logbook:
+map:
+media_source:
+mobile_app:
+my:
+network:
+person:
+scene:
+script:
+ssdp:
+sun:
+system_health:
+tag:
+timer:
+usb:
+webhook:
+zeroconf:
+zone:
+
+#---------------------------------MAIN SYSTEM----------------------------------#
 
 homeassistant:
   customize_domain: !include customize/customize_domain.yaml
