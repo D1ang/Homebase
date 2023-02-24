@@ -3,15 +3,24 @@ esphome:
   platform: ESP32
   board: esp32doit-devkit-v1
 
-# esp8266:
-#   board: nodemcuv2
-
 # Enable logging
 logger:
   level: debug
 
 # Enable Home Assistant API
-api:
+# api:
+
+
+mqtt:
+  topic_prefix: bodymiscale
+  discovery: true
+  broker: 192.168.5.26
+  port: 1883
+  username: mqtt-user
+  password: y00NwZ4l65V5v1pu9QbJ2yqaG
+  discovery_prefix: homeassistant
+
+
 
 ota:
   password: "224c14826fd2a8216b926efc1f0385b5"
@@ -21,3 +30,72 @@ wifi:
   password: "RK628AwnBx48Y2h553z25V7M"
 
 esp32_ble_tracker:
+
+sensor:
+  - platform: xiaomi_miscale
+    mac_address: '5C:CA:D3:63:FA:69'
+    weight:
+      name: "Xiaomi Mi Scale Weight"
+      id: weight_miscale
+      on_value:
+        then:
+          - lambda: |-
+              if (id(weight_miscale).state >= 15 && id(weight_miscale).state <= 62) {
+                return id(weight_user1).publish_state(x);}
+              else if (id(weight_miscale).state >= 63 && id(weight_miscale).state <= 90) {
+                return id(weight_user2).publish_state(x);}
+              else if (id(weight_miscale).state >= 91 && id(weight_miscale).state <= 105) {
+                return id(weight_user3).publish_state(x);}
+
+    impedance:
+      name: "Xiaomi Mi Scale Impedance"
+      id: impedance_miscale
+      on_value:
+        then:
+          - lambda: |-
+              if (id(weight_miscale).state >= 15 && id(weight_miscale).state <= 62) {
+                return id(impedance_user1).publish_state(x);}
+              else if (id(weight_miscale).state >= 63 && id(weight_miscale).state <= 90) {
+                return id(impedance_user2).publish_state(x);}
+              else if (id(weight_miscale).state >= 91 && id(weight_miscale).state <= 105) {
+                return id(impedance_user3).publish_state(x);}
+
+
+  - platform: template
+    name: Weight Anakin
+    id: weight_user1
+    unit_of_measurement: 'kg'
+    icon: mdi:weight-kilogram
+    accuracy_decimals: 2
+  - platform: template
+    name: Impedance Anakin
+    id: impedance_user1
+    unit_of_measurement: 'Ω'
+    icon: mdi:omega
+    accuracy_decimals: 0
+
+  - platform: template
+    name: Weight Daphne
+    id: weight_user2
+    unit_of_measurement: 'kg'
+    icon: mdi:weight-kilogram
+    accuracy_decimals: 2
+  - platform: template
+    name: Impedance Daphne
+    id: impedance_user2
+    unit_of_measurement: 'Ω'
+    icon: mdi:omega
+    accuracy_decimals: 0
+
+  - platform: template
+    name: Weight Django
+    id: weight_user3
+    unit_of_measurement: 'kg'
+    icon: mdi:weight-kilogram
+    accuracy_decimals: 2
+  - platform: template
+    name: Impedance Django
+    id: impedance_user3
+    unit_of_measurement: 'Ω'
+    icon: mdi:omega
+    accuracy_decimals: 0
