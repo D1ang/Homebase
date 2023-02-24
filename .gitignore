@@ -21,6 +21,7 @@ esphome/secrets.yaml
 home-assistant.log
 home-assistant.log.1
 home-assistant_v2.db
+music_assistant.db
 
 #----------------------------SYSTEM FILES & SECRETS----------------------------#
 
@@ -34,3 +35,4 @@ secrets.yaml
 deps
 tts
 www
+t.db
