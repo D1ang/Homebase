@@ -3,7 +3,7 @@
   alias: Wasmachine status standby
   trigger:
   - platform: state
-    entity_id: switch.wasmachine
+    entity_id: switch.washing_machine
     from: 'off'
     to: 'on'
   condition:
@@ -22,7 +22,7 @@
 - alias: Wasmachine status bezig
   trigger:
   - platform: numeric_state
-    entity_id: sensor.wasmachine_wattage
+    entity_id: sensor.washing_machine_power
     above: 10
   condition:
     condition: or
@@ -42,12 +42,12 @@
       entity_id: input_select.wasmachine_status
       option: Bezig
 
-# When the washing machine hits below the 6 Watts of usage change the status to "Afronden"
+# When the washing machine hits below the 5 Watts of usage change the status to "Afronden"
 - alias: Wasmachine status afronden
   trigger:
   - platform: numeric_state
-    entity_id: sensor.wasmachine_wattage
-    below: 6
+    entity_id: sensor.washing_machine_power
+    below: 5
   condition:
     condition: and
     conditions:
@@ -60,14 +60,14 @@
       entity_id: input_select.wasmachine_status
       option: Afronden
 
-# set a countdown for 2 minutes when the washing machine is on "Afronden", after 1 minute change the state to "Schoon"
+# set a countdown for 2 minutes when the washing machine is on "Afronden", after 2 minute change the state to "Schoon"
 - alias: Wasmachine status schoon
   trigger:
   - platform: state
     entity_id: input_select.wasmachine_status
     to: Afronden
     for:
-      minutes: 1
+      minutes: 3
   condition:
     condition: and
     conditions:
@@ -91,5 +91,6 @@
     data:
       message: De wasmachine is klaar!
       title: Wasmachine
+
   - service: homeassistant.turn_off
     entity_id: switch.wasmachine

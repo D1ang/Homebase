@@ -2,7 +2,7 @@
 - alias: Droger status standby
   trigger:
   - platform: state
-    entity_id: switch.droger
+    entity_id: switch.dryer
     from: 'off'
     to: 'on'
   condition:
@@ -21,7 +21,7 @@
 - alias: Droger status bezig
   trigger:
   - platform: numeric_state
-    entity_id: sensor.droger_wattage
+    entity_id: sensor.dryer_power
     above: 10
   condition:
     condition: or
@@ -45,7 +45,7 @@
 - alias: Droger status afronden
   trigger:
   - platform: numeric_state
-    entity_id: sensor.droger_wattage
+    entity_id: sensor.dryer_power
     below: 6
   condition:
     condition: and
@@ -90,5 +90,6 @@
     data:
       message: De droger is gereed!
       title: Droger
+
   - service: homeassistant.turn_off
     entity_id: switch.droger
