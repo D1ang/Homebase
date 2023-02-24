@@ -310,3 +310,28 @@
         entity_id: switch.toilet_ambiance_spots
         domain: switch
   mode: single
+- id: '1671972033393'
+  alias: Ring bell
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.frontdoor_doorbell
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: camera.play_stream
+    data:
+      media_player: media_player.woonkamer_display
+      format: hls
+    target:
+      entity_id: camera.frontdoor_high
+  - service: camera.play_stream
+    data:
+      media_player: media_player.kantoor_display
+      format: hls
+    target:
+      entity_id:
+      - camera.frontdoor_high
+  mode: single
