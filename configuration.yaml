@@ -1,37 +1,7 @@
 
 #--------------------------------DEFAULT CONFIG--------------------------------#
 
-# default_config:
-application_credentials:
-automation:
-counter:
-dhcp:
-energy:
-frontend:
-history:
-input_boolean:
-input_button:
-input_datetime:
-input_number:
-input_text:
-logbook:
-map:
-media_source:
-mobile_app:
-my:
-network:
-person:
-scene:
-script:
-ssdp:
-sun:
-system_health:
-tag:
-timer:
-usb:
-webhook:
-zeroconf:
-zone:
+default_config:
 
 #---------------------------------MAIN SYSTEM----------------------------------#
 
