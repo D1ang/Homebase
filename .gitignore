@@ -24,6 +24,7 @@ home-assistant_v2.db
 
 #----------------------------SYSTEM FILES & SECRETS----------------------------#
 
+*.pyc
 *.db-wal
 *.db-shm
 secrets.yaml
