@@ -1,8 +1,10 @@
 substitutions:
   device_name: switch-office
   friendly_name: "switch office"
-  api_password: !secret esphome_api
   ota_password: !secret esphome_ota
+
+
+ 
   
 esphome:
   name: ${device_name}
@@ -12,17 +14,12 @@ esphome:
 wifi:
   ssid: !secret IoT_ssid
   password: !secret IoT_password
-  manual_ip:
-    static_ip: 192.168.10.26
-    gateway: 192.168.10.1
-    subnet: 255.255.255.0
-    dns1: 192.168.10.1
-    dns2: 0.0.0.0
 
 logger:
 
 api:
-  password: ${api_password}
+  encryption: 
+    key: "SvTxj76j9K4D9tluy4zDK/yiMRqAqEnegAIIEeYfE3o="
 
 ota:
   password: ${ota_password}

@@ -2,21 +2,17 @@ esphome:
   name: lock-trapluik
   platform: ESP8266
   board: esp01_1m
+  esp8266_restore_from_flash: true
 
 wifi:
   ssid: !secret IoT_ssid
   password: !secret IoT_password
-  manual_ip:
-    static_ip: 192.168.10.48
-    gateway: 192.168.10.1
-    subnet: 255.255.255.0
-    dns1: 192.168.10.1
-    dns2: 0.0.0.0
 
 logger:
 
 api:
-  password: !secret esphome_api
+  encryption: 
+    key: 'Vm4u9qacc2AXOU15/py0Sd7n9goZehFYmZWMA+SqIBw='
 
 ota:
   password: !secret esphome_ota
@@ -26,6 +22,7 @@ switch:
     name: Trapluik
     id: relay
     pin: GPIO12
+    inverted: true
     on_turn_on:
       - light.turn_on: led
     on_turn_off:
@@ -52,4 +49,3 @@ light:
   - platform: monochromatic
     output: green_led
     id: led
-    

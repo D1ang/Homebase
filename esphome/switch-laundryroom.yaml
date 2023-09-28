@@ -1,7 +1,6 @@
 substitutions:
   device_name: switch-laundryroom
   friendly_name: "switch laundryroom"
-  api_password: !secret esphome_api
   ota_password: !secret esphome_ota
 
 esphome:
@@ -12,17 +11,12 @@ esphome:
 wifi:
   ssid: !secret IoT_ssid
   password: !secret IoT_password
-  manual_ip:
-    static_ip: 192.168.10.24
-    gateway: 192.168.10.1
-    subnet: 255.255.255.0
-    dns1: 192.168.10.1
-    dns2: 0.0.0.0
 
 logger:
 
 api:
-  password: ${api_password}
+  encryption: 
+    key: "cVBa50lk8urgDY11GQwuEyMCkMEaIiKPpLvfljIGvg4="
 
 ota:
   password: ${ota_password}

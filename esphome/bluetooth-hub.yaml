@@ -3,31 +3,24 @@ esphome:
   platform: ESP32
   board: esp32doit-devkit-v1
 
-# Enable logging
 logger:
   level: debug
-
-# Enable Home Assistant API
-# api:
-
 
 mqtt:
   topic_prefix: bodymiscale
   discovery: true
-  broker: 192.168.5.26
+  broker: 192.168.10.66
   port: 1883
-  username: mqtt-user
-  password: y00NwZ4l65V5v1pu9QbJ2yqaG
+  username: bodymiscale
+  password: Jf4HE6EwgDdq4rg5L9dT7uF97
   discovery_prefix: homeassistant
 
-
-
 ota:
-  password: "224c14826fd2a8216b926efc1f0385b5"
+  password: '224c14826fd2a8216b926efc1f0385b5'
 
 wifi:
-  ssid: Motherbase
-  password: "RK628AwnBx48Y2h553z25V7M"
+  ssid: !secret IoT_ssid
+  password: !secret IoT_password
 
 esp32_ble_tracker:
 
@@ -35,7 +28,7 @@ sensor:
   - platform: xiaomi_miscale
     mac_address: '5C:CA:D3:63:FA:69'
     weight:
-      name: "Xiaomi Mi Scale Weight"
+      name: 'Xiaomi Mi Scale Weight'
       id: weight_miscale
       on_value:
         then:
@@ -48,7 +41,7 @@ sensor:
                 return id(weight_user3).publish_state(x);}
 
     impedance:
-      name: "Xiaomi Mi Scale Impedance"
+      name: 'Xiaomi Mi Scale Impedance'
       id: impedance_miscale
       on_value:
         then:
@@ -59,7 +52,6 @@ sensor:
                 return id(impedance_user2).publish_state(x);}
               else if (id(weight_miscale).state >= 91 && id(weight_miscale).state <= 105) {
                 return id(impedance_user3).publish_state(x);}
-
 
   - platform: template
     name: Weight Anakin
