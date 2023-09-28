@@ -1,9 +1,9 @@
 
-#--------------------------------DEFAULT CONFIG--------------------------------#
+# ------------------------------ Default config ------------------------------ #
 
 default_config:
 
-#---------------------------------MAIN SYSTEM----------------------------------#
+# ------------------------------- Main system -------------------------------- #
 
 homeassistant:
   customize_domain: !include customize/customize_domain.yaml
@@ -13,23 +13,20 @@ http:
   trusted_proxies: !secret trusted_proxy
   login_attempts_threshold: 3
 
-#--------------------------CUSTOMISATION & AUTOMATION--------------------------#
+recorder:
+  db_url: !secret db_url
 
-automation manual: !include_dir_merge_list automations/
-automation ui: !include automations.yaml
+# ------------------------ Customisation & automation ------------------------ #
 
-#----------------------------------SELECTORS-----------------------------------#
+automation: !include automations.yaml
+script: !include scripts.yaml
 
-input_select: !include platforms/options.yaml
+# ------------------------------- Integrations ------------------------------- #
 
-#-------------------------HARDWARE & SOFTWARE PLATFORMS------------------------#
+tts: !include integrations/google_translate.yaml
+rest_command: !include integrations/rest_commands.yaml
 
-tts: !include platforms/google_translate.yaml
+# ---------------------------------- Lights ---------------------------------- #
 
-#------------------------------------LIGHTS------------------------------------#
-
+# The Mi-lights are going to be fased out and will be decremented!
 light: !include devices/lights/milights.yaml
-
-#-----------------------------------SENSORS------------------------------------#
-
-sensor: !include devices/sensors/sensors.yaml
