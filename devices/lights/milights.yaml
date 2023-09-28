@@ -1,16 +1,19 @@
 
-#---------------------------3 MILIGHT DEVICES, 1 HOST--------------------------#
+# ------------------------- 3 Milight devices, 1 host ------------------------ #
+
+# Decrement these devices in the future
+# Replace with Zigbee based spots of the same brand.
 
 - platform: limitlessled
   bridges:
-   - host: 192.168.5.245
+   - host: 192.168.10.35
      groups:
      - number: 2
        type: rgbww
-       name: Trap spots
+       name: Stair spots
      - number: 3
        type: rgbww
-       name: Kantoor spots
+       name: Office spots
      - number: 4
        type: rgbww
        name: Studio spots
