@@ -28,69 +28,8 @@
     type: set_position
     position: 100
   mode: single
-- id: '1662823411899'
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - light.master_bedroom_lamp
-    - switch.master_bedoom_switch_l1
-    from: 'off'
-    to: 'on'
-    id: ON_I1
-    enabled: true
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0.3
-    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from off to
-      on
-  - platform: state
-    entity_id:
-    - light.master_bedroom_lamp
-    - switch.master_bedoom_switch_l1
-    from: 'on'
-    to: 'off'
-    enabled: true
-    id: OFF_I1
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0.3
-    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from on to
-      off
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: ON_I1
-      sequence:
-      - type: turn_on
-        device_id: 6697eb702c4a8999b00439c413ab4b05
-        entity_id: light.master_bedroom_lamp
-        domain: light
-        flash: short
-      - type: turn_on
-        device_id: dab1a0a4be68796827660f83051e4414
-        entity_id: switch.master_bedoom_switch_l1
-        domain: switch
-    - conditions:
-      - condition: trigger
-        id: OFF_I1
-      sequence:
-      - type: turn_off
-        device_id: 6697eb702c4a8999b00439c413ab4b05
-        entity_id: light.master_bedroom_lamp
-        domain: light
-      - type: turn_off
-        device_id: dab1a0a4be68796827660f83051e4414
-        entity_id: switch.master_bedoom_switch_l1
-        domain: switch
-    alias: I1 turn on or off
-  mode: single
 - id: '1663005344795'
-  alias: Babyroom switch
+  alias: 002 - Switch babyroom
   description: ''
   trigger:
   - platform: state
@@ -104,7 +43,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 0.3
+      seconds: 1
     alias: When Babyroom lamp, or Babyroom switch I1 changes from off to on
   - platform: state
     entity_id:
@@ -117,7 +56,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 0.3
+      seconds: 1
     alias: When Babyroom lamp, or Babyroom switch l1 changes from on to off
   - platform: state
     entity_id:
@@ -130,7 +69,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 0.3
+      seconds: 1
     alias: When Babyroom floorlamps, or Babyroom switch l2 changes from off to on
   - platform: state
     entity_id:
@@ -143,7 +82,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 0.3
+      seconds: 1
     alias: When Babyroom floorlamps, or Babyroom switch l2 changes from on to off
   condition: []
   action:
@@ -235,37 +174,6 @@
     entity_id: light.livingroom_lamp
     domain: light
   mode: single
-- id: '1666611020865'
-  alias: Kinderkamer gordijnen sluiten om 18:30
-  description: ''
-  trigger:
-  - platform: time
-    at: '18:30:00'
-    id: CLOSE
-  - platform: time
-    at: 09:00:00
-    id: OPEN
-  condition: []
-  action:
-  - if:
-    - condition: trigger
-      id: CLOSE
-    then:
-    - device_id: 1ae5e103ce22c76d23e5dcf79a4e2e82
-      domain: cover
-      entity_id: cover.childroom_curtains_curtain
-      type: set_position
-      position: 0
-  - if:
-    - condition: trigger
-      id: OPEN
-    then:
-    - device_id: 1ae5e103ce22c76d23e5dcf79a4e2e82
-      domain: cover
-      entity_id: cover.childroom_curtains_curtain
-      type: set_position
-      position: 100
-  mode: single
 - id: '1671275043066'
   alias: Toilet bewegingssensor
   description: ''
@@ -310,28 +218,941 @@
         entity_id: switch.toilet_ambiance_spots
         domain: switch
   mode: single
-- id: '1671972033393'
-  alias: Ring bell
-  description: ''
+- id: '1686033252377'
+  alias: Deurbel
+  description: Frontdoor bell
   trigger:
   - platform: state
     entity_id:
-    - binary_sensor.frontdoor_doorbell
+    - binary_sensor.doorbell
     from: 'off'
     to: 'on'
   condition: []
   action:
+  - service: rest_command.pipup_image_on_tv
+    data:
+      title: DEURBEL
+      message: er staat iemand voor de deur
+      backgroundColor: '#70000000'
+      position: 2
+      duration: 30
+      url: https://hassio.tanooki.nl{{ state_attr('camera.frontdoor_low', 'entity_picture')
+        }}
+      width: 380
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.wallpanel_screen
   - service: camera.play_stream
     data:
-      media_player: media_player.woonkamer_display
       format: hls
+      media_player: media_player.wallpanel
     target:
-      entity_id: camera.frontdoor_high
-  - service: camera.play_stream
+      device_id: ab0978058411bd1e36cf70b9958a4c4a
+  mode: single
+- id: '1688838364277'
+  alias: Boventrap sensor
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.upper_staircase_sensor_occupancy
+    id: DETECT
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - binary_sensor.upper_staircase_sensor_occupancy
+    id: CLEAR
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - DETECT
+      sequence:
+      - service: light.turn_on
+        data:
+          color_temp: 445
+        target:
+          entity_id:
+          - light.stair_spots
+    - conditions:
+      - condition: trigger
+        id:
+        - CLEAR
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.stair_spots
+  mode: single
+- id: '1690113287406'
+  alias: Wallmount
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.wallpanel_battery
+    below: 20
+    id: BELOW
+  - platform: numeric_state
+    entity_id: sensor.wallpanel_battery
+    id: ABOVE
+    above: 80
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - BELOW
+      sequence:
+      - service: switch.turn_on
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - ABOVE
+      sequence:
+      - service: switch.turn_off
+        data: {}
+  mode: single
+- id: '1690113613329'
+  alias: Doorbell wallpanel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.doorbell
+  condition: []
+  action:
+  - service: fully_kiosk.load_url
     data:
-      media_player: media_player.kantoor_display
-      format: hls
+      url: https://192.168.5.26/dashboard-test/2
     target:
-      entity_id:
-      - camera.frontdoor_high
+      device_id: b8bad416dd4174e001cf0c1a24a64fc6
+  mode: single
+- id: '1693742950918'
+  alias: Tuinverlichting zonsondergang
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id: light.garden_lights
+  mode: single
+- id: '1693743732390'
+  alias: Tuinverlichting zonsopkomst
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: light.garden_lights
+  mode: single
+- id: '1693743905152'
+  alias: Takken zonsondergang aan
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:20:00
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id: switch.livingroom_branches
+  mode: single
+- id: '1693743990612'
+  alias: Takken schakelklok
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: switch.livingroom_branches
+  mode: single
+- id: '1693746624905'
+  alias: Keukenraam schakelklok
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:30:00
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kitchen_window_lamp
+  mode: single
+- id: '1693746651004'
+  alias: Keukenraam zonsondergang aan
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:15:00
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.kitchen_window_lamp
+  mode: single
+- id: '1695849852078'
+  alias: Keuken bewegingssensor
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: b71e2792fd7ec4f532ff3f5671b41417
+    entity_id: binary_sensor.kitchen_sensor_occupancy
+    domain: binary_sensor
+    for:
+      seconds: 2
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.kitchen_spots
+  mode: single
+- id: '1695849906034'
+  alias: Keuken geen beweging
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: b71e2792fd7ec4f532ff3f5671b41417
+    entity_id: binary_sensor.kitchen_sensor_occupancy
+    domain: binary_sensor
+    for:
+      seconds: 3
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.kitchen_spots
+  mode: single
+- id: '1695849974537'
+  alias: Trapkast deur open
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.stair_closet_sensor_contact
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.stair_closet_lamp
+  mode: single
+  initial_state: 'on'
+- id: '1695850035191'
+  alias: Trapkast deur gesloten
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.stair_closet_sensor_contact
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.stair_closet_lamp
+  mode: single
+  initial_state: 'on'
+- id: '1695850110078'
+  alias: Inloopkast bewegingssensor
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: b71e2792fd7ec4f532ff3f5671b41417
+    entity_id: binary_sensor.walk_in_closet_sensor_occupancy
+    domain: binary_sensor
+    for:
+      seconds: 1
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.walk_in_closet_spots
+  mode: single
+- id: '1695850126069'
+  alias: Inloopkast geen beweging
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: b71e2792fd7ec4f532ff3f5671b41417
+    entity_id: binary_sensor.walk_in_closet_sensor_occupancy
+    domain: binary_sensor
+    for:
+      seconds: 1
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.walk_in_closet_spots
+  mode: single
+- id: '1695914574891'
+  alias: Droger status standby
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.dryer
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Droog
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Standby
+  mode: single
+- id: '1695914590940'
+  alias: Droger status melding
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.dryer_status
+    to: Droog
+  condition: []
+  action:
+  - service: notify.mobile_app_galaxy_s21
+    data:
+      message: De droger is gereed!
+      title: Droger
+  - service: homeassistant.turn_off
+    entity_id: switch.dryer
+  mode: single
+- id: '1695914605343'
+  alias: Droger status droog
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.dryer_status
+    to: Afronden
+    for:
+      minutes: 2
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.dryer_status
+      state: Afronden
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Droog
+  mode: single
+- id: '1695914618246'
+  alias: Droger status bezig
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.dryer_power
+    above: 10
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Standby
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Droog
+    - condition: state
+      entity_id: sensor.dryer_status
+      state: Afronden
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Bezig
+  mode: single
+- id: '1695914632682'
+  alias: Droger status afronden
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.dryer_power
+    below: 6
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_select.dryer_status
+      state: Bezig
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.dryer_status
+      option: Afronden
+  mode: single
+- id: '1695915929182'
+  alias: 004 - Switch office
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.office_spots
+    - switch.office_left
+    from: 'off'
+    to: 'on'
+    id: ON_l1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.office_spots
+    - switch.office_left
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.kantoor_sfeerspots
+    - switch.office_middle
+    from: 'off'
+    to: 'on'
+    id: ON_l2
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.kantoor_sfeerspots
+    - switch.office_middle
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l2
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.studio_spots
+    - switch.office_right
+    from: 'off'
+    to: 'on'
+    id: ON_l3
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.studio_spots
+    - switch.office_right
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l3
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l1
+      sequence:
+      - service: homeassistant.turn_on
+        data: {}
+        target:
+          entity_id: light.office_spots
+      - type: turn_on
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: c7ca503ce19ae8a25ee88c59619be28b
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l1
+      sequence:
+      - service: homeassistant.turn_off
+        data: {}
+        target:
+          entity_id: light.office_spots
+      - type: turn_off
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: c7ca503ce19ae8a25ee88c59619be28b
+        domain: switch
+    alias: I1 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l2
+      sequence:
+      - type: turn_on
+        device_id: 92ddc456153211ebaed267bff820eda9
+        entity_id: 20f5b9cc20b89fbcf5cd1c62bf2ceb27
+        domain: switch
+      - type: turn_on
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: 91d6e75bb9c55fb0ac9471ec2669fd9f
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l2
+      sequence:
+      - type: turn_off
+        device_id: 92ddc456153211ebaed267bff820eda9
+        entity_id: 20f5b9cc20b89fbcf5cd1c62bf2ceb27
+        domain: switch
+      - type: turn_off
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: 91d6e75bb9c55fb0ac9471ec2669fd9f
+        domain: switch
+    alias: I2 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - ON_l3
+      sequence:
+      - service: homeassistant.turn_on
+        data: {}
+        target:
+          entity_id: light.studio_spots
+      - type: turn_on
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: a68626a87442b6e80c90a5c12417f874
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - OFF_l3
+      sequence:
+      - service: homeassistant.turn_off
+        data: {}
+        target:
+          entity_id: light.studio_spots
+      - type: turn_off
+        device_id: 78408aff151a11eb9c915502b29edd1b
+        entity_id: a68626a87442b6e80c90a5c12417f874
+        domain: switch
+    alias: I3 turn on or off
+  mode: single
+- id: '1695920577623'
+  alias: 001 - Switch master bedroom
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.master_bedroom_lamp
+    - switch.master_bedoom_switch_l1
+    from: 'off'
+    to: 'on'
+    id: ON_I1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from off to
+      on
+  - platform: state
+    entity_id:
+    - light.master_bedroom_lamp
+    - switch.master_bedoom_switch_l1
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_I1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0.3
+    alias: When Master bedroom lamp, or Master bedoom switch l1 changes from on to
+      off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_I1
+      sequence:
+      - type: turn_on
+        device_id: 6697eb702c4a8999b00439c413ab4b05
+        entity_id: light.master_bedroom_lamp
+        domain: light
+        flash: short
+      - type: turn_on
+        device_id: dab1a0a4be68796827660f83051e4414
+        entity_id: switch.master_bedoom_switch_l1
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_I1
+      sequence:
+      - type: turn_off
+        device_id: 6697eb702c4a8999b00439c413ab4b05
+        entity_id: light.master_bedroom_lamp
+        domain: light
+      - type: turn_off
+        device_id: dab1a0a4be68796827660f83051e4414
+        entity_id: switch.master_bedoom_switch_l1
+        domain: switch
+    alias: I1 turn on or off
+  mode: single
+- id: '1695921117783'
+  alias: 005 - Switch childroom
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.childroom_left
+    from: 'off'
+    to: 'on'
+    id: ON_l1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.childroom_left
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.anakins_sfeerspots
+    - switch.childroom_middle
+    from: 'off'
+    to: 'on'
+    id: ON_l2
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.anakins_sfeerspots
+    - switch.childroom_middle
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l2
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.childroom_spots
+    - switch.childroom_right
+    from: 'off'
+    to: 'on'
+    id: ON_l3
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.childroom_spots
+    - switch.childroom_right
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l3
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - ON_l1
+      sequence:
+      - service: media_player.play_media
+        target:
+          entity_id: media_player.anakin_s_speaker
+        data:
+          media_content_id: '104'
+          media_content_type: album
+        metadata:
+          title: Slaaptijd
+          thumbnail:
+          media_class: album
+          children_media_class: track
+          navigateIds:
+          - {}
+          - media_content_type: Albums
+            media_content_id: Albums
+          - media_content_type: album
+            media_content_id: '104'
+      - type: turn_on
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: 820207deedc96fe359476d4766ea4e0b
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - OFF_l1
+      sequence:
+      - service: media_player.media_stop
+        data: {}
+        target:
+          device_id: 1033f4040745bf054879d8c43904ef87
+      - type: turn_off
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: 820207deedc96fe359476d4766ea4e0b
+        domain: switch
+    alias: I1 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l2
+      sequence:
+      - type: turn_on
+        device_id: ce079d3707ed051aa1887170fd052064
+        entity_id: 35a970c3a832364889e97b169438738f
+        domain: switch
+      - type: turn_on
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: e8ceff70e8248cc04d061c210f4512ea
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l2
+      sequence:
+      - type: turn_off
+        device_id: ce079d3707ed051aa1887170fd052064
+        entity_id: 35a970c3a832364889e97b169438738f
+        domain: switch
+      - type: turn_off
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: e8ceff70e8248cc04d061c210f4512ea
+        domain: switch
+    alias: I2 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - ON_l3
+      sequence:
+      - service: homeassistant.turn_on
+        data: {}
+        target:
+          entity_id:
+          - light.childroom_spots
+      - type: turn_on
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: bf2cb0e636cdb1fe9bed5eb2f9b4fcf2
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - OFF_l3
+      sequence:
+      - service: homeassistant.turn_off
+        data: {}
+        target:
+          entity_id: light.childroom_spots
+      - type: turn_off
+        device_id: 21b3b08a151511ebbcee47246b8da4d7
+        entity_id: bf2cb0e636cdb1fe9bed5eb2f9b4fcf2
+        domain: switch
+    alias: I3 turn on or off
+  mode: single
+- id: '1695921271475'
+  alias: 003 - Switch upper hall
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.upper_staircase_panel
+    - switch.laundryroom_left
+    from: 'off'
+    to: 'on'
+    id: ON_l1
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - light.upper_staircase_panel
+    - switch.laundryroom_left
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.laundryroom_middle
+    from: 'off'
+    to: 'on'
+    id: ON_l2
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.laundryroom_middle
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l2
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.wasruimte_sfeerspots
+    - switch.laundryroom_right
+    from: 'off'
+    to: 'on'
+    id: ON_l3
+    enabled: true
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  - platform: state
+    entity_id:
+    - switch.wasruimte_sfeerspots
+    - switch.laundryroom_right
+    from: 'on'
+    to: 'off'
+    enabled: true
+    id: OFF_l3
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l1
+      sequence:
+      - type: turn_on
+        device_id: 4b17991d5c59b5ea0bb3454cf9aa2247
+        entity_id: 24b9b11580a2bf71dc28711990cc779c
+        domain: light
+      - type: turn_on
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 6dbca2155a62f44373d32cb18e013aa4
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l1
+      sequence:
+      - type: turn_off
+        device_id: 4b17991d5c59b5ea0bb3454cf9aa2247
+        entity_id: 24b9b11580a2bf71dc28711990cc779c
+        domain: light
+      - type: turn_off
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 6dbca2155a62f44373d32cb18e013aa4
+        domain: switch
+    alias: I1 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ON_l2
+      sequence:
+      - type: turn_on
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 320bc9bad311692fda40545cc05ea67d
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: OFF_l2
+      sequence:
+      - type: turn_off
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 320bc9bad311692fda40545cc05ea67d
+        domain: switch
+    alias: I2 turn on or off
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - ON_l3
+      sequence:
+      - type: turn_on
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 03f22180997bd381b2af95b3db86d50a
+        domain: switch
+      - type: turn_on
+        device_id: acd8d98374624139d1959120f453a7b5
+        entity_id: 058ff795f493ae5822a7c38e9f987b53
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - OFF_l3
+      sequence:
+      - type: turn_off
+        device_id: 2f2e8c1c89f7923ab71fd7d4ee5d7345
+        entity_id: 03f22180997bd381b2af95b3db86d50a
+        domain: switch
+      - type: turn_off
+        device_id: acd8d98374624139d1959120f453a7b5
+        entity_id: 058ff795f493ae5822a7c38e9f987b53
+        domain: switch
+    alias: I3 turn on or off
   mode: single
