@@ -1,3 +1,6 @@
+
+# ----------------------- Doorbell popup video script ------------------------ #
+
 doorbell_to_tv_popup:
   alias: Display frontdoor popup on TV
   sequence:
