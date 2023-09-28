@@ -37,12 +37,6 @@ Relevant configurations can be found within [configuration.yaml](https://github.
 
 Relevant configurations can be found mostly within [sensors.yaml](https://github.com/D1ang/Homebase/blob/master/devices/sensors/sensors.yaml)
 
-Future plans are:
-
-- to convert the VM installation of DSMR reader to a docker based container.
-- Change the smart Gateway meter to MQTT only.
-- To change the GoodWe inverter so, that it will collect data locally see [this link](https://gitlab.com/sircuri/goodweusblogger) and removing cloud dependencie.
-
 ## Climate
 
 | [Go to Menu](#menu) | [Daikin Residential Controller](https://github.com/rospogrigio/daikin_residential) |
@@ -63,5 +57,4 @@ Buienradar for now is only used in the dashboard.
 In the customize folder `asumed state` is set to `false` to remove the lighting bolts
 and replace them with toggle buttons.
 
-EXAMPLE FOR FUTURE:
-https://github.com/basnijholt/home-assistant-config
+EXAMPLE FOR FUTURE: [link](https://github.com/basnijholt/home-assistant-config)
